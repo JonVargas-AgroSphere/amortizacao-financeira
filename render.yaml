@@ -3,6 +3,7 @@ services:
     name: amortizacao-financeira
     env: node
     plan: free
+    buildCommand: npm install
     startCommand: npm start
     envVars:
       - key: PORT
