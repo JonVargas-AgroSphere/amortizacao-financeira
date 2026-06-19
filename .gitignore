@@ -1,0 +1,5 @@
+node_modules/
+assets/css/tailwind.css
+server/leads.json
+.env
+!.env.example

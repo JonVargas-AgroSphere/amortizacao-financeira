@@ -1,0 +1,19 @@
+{
+  "name": "amortizacao-financeira",
+  "version": "1.0.0",
+  "description": "Simulador de amortização e portabilidade imobiliária",
+  "scripts": {
+    "build:css": "npx tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --minify",
+    "watch:css": "npx tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --watch",
+    "start:server": "node server/index.js",
+    "dev": "npm run build:css && npm run start:server"
+  },
+  "devDependencies": {
+    "pa11y": "^9.1.1",
+    "tailwindcss": "^3.4.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^4.18.2"
+  }
+}
