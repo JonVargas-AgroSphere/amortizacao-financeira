@@ -1,5 +1,5 @@
 node_modules/
-assets/css/tailwind.css
+# assets/css/tailwind.css  (removido — Render usa o pré-compilado)
 server/leads.json
 .env
 !.env.example
