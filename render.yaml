@@ -8,11 +8,11 @@ services:
       - key: PORT
         value: 3000
       - key: GA4_ID
-        sync: false
+        value: G-J6CQG19L6Z
       - key: ADSENSE_CLIENT
-        sync: false
+        value: ca-pub-6191460191140933
       - key: WHATSAPP_NUMBER
-        sync: false
+        value: 5551989840198
       - key: SITE_DOMAIN
         value: amortizacaofinanceira.com.br
       - key: ADMIN_TOKEN
