@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: amortizacao-financeira
+    env: node
+    buildCommand: npm run build:css
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 3000
+      - key: GA4_ID
+        sync: false
+      - key: ADSENSE_CLIENT
+        sync: false
+      - key: WHATSAPP_NUMBER
+        sync: false
+      - key: SITE_DOMAIN
+        value: amortizacaofinanceira.com.br
+      - key: ADMIN_TOKEN
+        sync: false

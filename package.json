@@ -5,6 +5,7 @@
   "scripts": {
     "build:css": "npx tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --minify",
     "watch:css": "npx tailwindcss -i ./src/css/input.css -o ./assets/css/tailwind.css --watch",
+    "start": "node server/index.js",
     "start:server": "node server/index.js",
     "dev": "npm run build:css && npm run start:server"
   },
