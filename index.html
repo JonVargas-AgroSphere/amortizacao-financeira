@@ -137,8 +137,8 @@
                         </div>
                         <p class="text-sm text-slate-500 mb-6">Insira os dados do seu contrato atual para descobrir como diminuir os juros do seu financiamento imobiliário e avaliar propostas de portabilidade.</p>
 
-                        <!-- Inputs Grupo 1 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <!-- Inputs - empilhados verticalmente -->
+                        <div class="space-y-4 mb-6">
                             <!-- Campo 1: Saldo Devedor -->
                             <div class="group relative">
                                 <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
@@ -146,7 +146,7 @@
                                     <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
                                 </label>
                                 <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
-                                    ?? o valor total restante da sua dívida imobiliária. Essa informação consta no app do seu banco ou na éltima planilha de evolução.
+                                    O valor total restante da sua dívida imobiliária. Essa informação consta no app do seu banco ou na última planilha de evolução.
                                     <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
                                 </div>
                                 <div class="relative">
@@ -167,10 +167,7 @@
                                 </div>
                                 <input id="input-prazo-restante" type="number" value="240" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
                             </div>
-                        </div>
 
-                        <!-- Inputs Grupo 2 -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <!-- Campo 3: Taxa de Juros Atual -->
                             <div class="group relative">
                                 <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
@@ -234,8 +231,8 @@
                         </div>
 
                         <!-- Ingressos Regulamentares -->
-                        <h3 class="text-xs font-extrabold text-slate-500 uppercase tracking-widest mb-3 border-t pt-4 border-slate-100">Taxas e Seguros Mensais Obrigatérios</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <h3 class="text-xs font-extrabold text-slate-500 uppercase tracking-widest mb-3 border-t pt-4 border-slate-100">Taxas e Seguros Mensais Obrigatórios</h3>
+                        <div class="space-y-4 mb-6">
                             <!-- Campo 5: Taxa Adm Mensal -->
                             <div class="group relative">
                                 <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
@@ -259,7 +256,7 @@
                                     <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
                                 </label>
                                 <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
-                                    Seguro imobiliário obrigatério que cobre danos físicos ao imóvel (DFI) e morte/invalidez (MIP).
+                                    Seguro imobiliário obrigatório que cobre danos físicos ao imóvel (DFI) e morte/invalidez (MIP).
                                     <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
                                 </div>
                                 <div class="relative">
@@ -275,7 +272,7 @@
                                 <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
                                 <h4 class="text-sm font-bold text-emerald-900">Taxa de Portabilidade Oferecida no Mercado</h4>
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="space-y-3">
                                 <div class="group relative">
                                     <label class="block text-xs font-bold text-emerald-800 uppercase mb-1 flex items-center gap-1 cursor-help">
                                         Nova Taxa Simulada (% a.a.)
@@ -290,9 +287,7 @@
                                         <span class="absolute right-3 top-2 text-emerald-600 text-sm font-semibold pointer-events-none">% a.a.</span>
                                     </div>
                                 </div>
-                                <div class="flex flex-col justify-end">
-                                    <span class="text-xs text-emerald-800/80 leading-relaxed">Reduzir a taxa de juros nominal em poucos pontos percentuais pode poupar dezenas de milhares de reais devido ao efeito dos juros compostos ao longo dos anos.</span>
-                                </div>
+                                <p class="text-xs text-emerald-800/80 leading-relaxed">Reduzir a taxa de juros nominal em poucos pontos percentuais pode poupar dezenas de milhares de reais devido ao efeito dos juros compostos ao longo dos anos.</p>
                             </div>
                         </div>
 
@@ -583,7 +578,7 @@
                 </div>
 
                 <!-- Coluna Direita Estática da Portabilidade (4 colunas) -->
-                <div id="sidebar-container" class="lg:col-span-4 flex flex-col gap-6">
+                <div id="sidebar-container" class="lg:col-span-4 flex flex-col gap-6 h-full">
                     
                     <!-- Painel de Resultados Técnicos -->
                     <div id="results-card" class="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-800 text-white relative overflow-hidden transition-all duration-300">
@@ -690,6 +685,55 @@
                         </div>
                     </div>
 
+                    <!-- 3 AdSense Cards preenchendo altura até o último artigo -->
+                    <div class="flex flex-col gap-3 flex-1 min-h-[360px]">
+                        <div class="flex-1 bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner p-4 min-h-[100px]">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                                <span class="text-slate-600">Publicidade (Google AdSense)</span>
+                            </div>
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                                 data-ad-slot="XXXXXXXXXX"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="flex-1 bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner p-4 min-h-[100px]">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                                <span class="text-slate-600">Publicidade (Google AdSense)</span>
+                            </div>
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                                 data-ad-slot="XXXXXXXXXX"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                        <div class="flex-1 bg-slate-100 border border-slate-200 rounded-2xl flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner p-4 min-h-[100px]">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                                <span class="text-slate-600">Publicidade (Google AdSense)</span>
+                            </div>
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                                 data-ad-slot="XXXXXXXXXX"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </div>
+
                 </div>
 
             </div>
@@ -709,8 +753,8 @@
                         <p class="text-sm text-slate-500 mt-1">Descubra como amortizar financiamento para quitar juros imobiliários mais cedo por meio de aportes estratégicos adicionais.</p>
                     </div>
 
-                    <!-- Seção de Inputs -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-2 border-t border-slate-100 pt-4">
+                    <!-- Seção de Inputs - empilhados verticalmente -->
+                    <div class="space-y-4 mb-2 border-t border-slate-100 pt-4">
                         <!-- Campo 1: Saldo Devedor -->
                         <div class="group relative">
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
@@ -773,7 +817,7 @@
                         </div>
 
                         <!-- Campo 5: Método de Amortização de Escolha -->
-                        <div class="group relative md:col-span-2">
+                        <div class="group relative">
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
                                 Sistema de Amortização Base do Cenário de Amortizações
                                 <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
@@ -1013,12 +1057,33 @@
                                     </div>
 
                                 </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- AdSense 728x90 abaixo do Detalhamento -->
+                    <div class="w-full flex justify-center border-t border-slate-100 pt-6">
+                        <div class="bg-slate-100 border border-slate-200 rounded-xl h-[120px] flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner w-full max-w-[728px]">
+                            <div class="flex items-center gap-2 mb-1">
+                                <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                                <span class="text-slate-600">Publicidade (Google AdSense - 728x90)</span>
+                            </div>
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                                 data-ad-slot="XXXXXXXXXX"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!-- érea de Resultados e Leads do Destruidor (Alocados Abaixo) -->
+                <!-- Área de Resultados e Leads do Destruidor (Alocados Abaixo) -->
                 <div id="bottom-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
                     <!-- Elementos de resultados e captação seráo movidos para aqui dinamicamente via JS na aba de amortização -->
                 </div>
