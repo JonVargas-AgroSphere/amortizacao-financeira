@@ -802,18 +802,18 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
 
     const nome = document.getElementById('lead-nome').value;
     const whatsapp = document.getElementById('lead-whatsapp').value;
-    const banco = document.getElementById('lead-banco').value;
+    const parcelaAtual = document.getElementById('lead-parcela-atual').value;
 
     const economiaTotal = document.getElementById('res-economia-total').textContent;
     const parcelaNova = document.getElementById('res-parcela-nova').textContent;
 
-    const mensagem = `Olá! Acabei de fazer uma simulação no site *Amortização Financeira* e gostaria de uma análise detalhada:%0A%0A` +
+    const mensagem = `Olá! Acabei de fazer uma simulação no site *Amortização Financeira* e gostaria de uma análise:%0A%0A` +
                      `*Nome:* ${nome}%0A` +
                      `*WhatsApp:* ${whatsapp}%0A` +
-                     `*Banco Atual:* ${banco}%0A` +
+                     `*Parcela Atual:* R$ ${parcelaAtual}%0A` +
                      `*Economia Estimada:* R$ ${economiaTotal}%0A` +
                      `*Nova Parcela:* ${parcelaNova}%0A%0A` +
-                     `Pode me ajudar com o próximo passo?`;
+                     `Poderia analisar meu caso?`;
 
     const btn = this.querySelector('button');
     btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin text-emerald-400"></i> Abrindo WhatsApp...';
@@ -832,7 +832,7 @@ document.getElementById('lead-form').addEventListener('submit', function(e) {
     fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome, whatsapp, banco, economiaTotal, parcelaNova, data: new Date().toISOString() })
+        body: JSON.stringify({ nome, whatsapp, parcelaAtual, economiaTotal, parcelaNova, data: new Date().toISOString() })
     }).catch(() => {});
 });
 

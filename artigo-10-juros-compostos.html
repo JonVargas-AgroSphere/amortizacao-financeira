@@ -105,16 +105,161 @@
                     <img src="Artigo 10 - juros_compostos_mestre.png" alt="Juros Compostos" class="w-full object-contain">
                 </div>
                 <p>Neste artigo, explicamos como a matemática dos juros compostos torna a amortização sua ferramenta de defesa essencial.</p>
-            </div>
 
-            <footer class="mt-12 pt-8 border-t border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-6">
-                <div class="flex gap-2">
-                    <button onclick="sharePage()" class="flex items-center gap-2 px-4 py-2 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200 transition font-bold text-sm">
-                        <i data-lucide="share-2" class="w-4 h-4"></i>
-                        Compartilhar
-                    </button>
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">A Fórmula dos Juros Compostos em Termos Simples</h2>
+                <p>A fórmula dos juros compostos é mais simples do que parece:</p>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 text-center font-mono text-lg">
+                    <strong class="text-emerald-700">M = C × (1 + i)<sup>t</sup></strong>
                 </div>
-            </footer>
+                <p>Cada letra representa algo importante:</p>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong class="text-slate-900">M</strong> — Montante final, o valor total que você vai pagar ao final do financiamento.</li>
+                    <li><strong class="text-slate-900">C</strong> — Capital inicial, o valor que você pegou emprestado.</li>
+                    <li><strong class="text-slate-900">i</strong> — Taxa de juros por período (em decimal: 0,5% = 0,005).</li>
+                    <li><strong class="text-slate-900">t</strong> — Tempo, o número de períodos (meses ou anos).</li>
+                </ul>
+                <p>O segredo está no expoente <strong class="text-slate-900">t</strong>: os juros não incidem apenas sobre o valor inicial, mas sobre o montante acumulado <em>a cada mês</em>. É juro sobre juro, camada sobre camada.</p>
+                <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm">
+                    <p class="font-bold text-amber-800 flex items-center gap-2"><i data-lucide="lightbulb" class="w-4 h-4"></i> Resumo:</p>
+                    <p class="text-amber-700">No primeiro mês, você paga juros sobre o saldo devedor. No segundo mês, paga juros sobre o saldo devedor <em>que já inclui os juros do primeiro mês</em>. É uma bola de neve que cresce exponencialmente.</p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Exemplo Prático: Pequenas Diferenças, Gigantes Efeitos</h2>
+                <p>Imagine um financiamento de <strong class="text-slate-900">R$ 300.000</strong> em 30 anos (360 meses). Veja como uma diferença aparentemente pequena na taxa mensal transforma o valor total pago:</p>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-300 text-slate-900 font-bold">
+                                <th class="text-left py-2 pr-4">Taxa Mensal</th>
+                                <th class="text-left py-2 pr-4">Taxa Anual</th>
+                                <th class="text-left py-2 pr-4">Prestação (Price)</th>
+                                <th class="text-left py-2 pr-4">Total Pago em 30 anos</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="py-2 pr-4">0,50%</td>
+                                <td class="py-2 pr-4">6,17%</td>
+                                <td class="py-2 pr-4">R$ 1.799</td>
+                                <td class="py-2 pr-4">R$ 647.416</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">0,60%</td>
+                                <td class="py-2 pr-4">7,44%</td>
+                                <td class="py-2 pr-4">R$ 1.979</td>
+                                <td class="py-2 pr-4">R$ 712.574</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">0,70%</td>
+                                <td class="py-2 pr-4">8,72%</td>
+                                <td class="py-2 pr-4">R$ 2.178</td>
+                                <td class="py-2 pr-4">R$ 784.153</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">0,80%</td>
+                                <td class="py-2 pr-4">10,03%</td>
+                                <td class="py-2 pr-4">R$ 2.400</td>
+                                <td class="py-2 pr-4">R$ 864.125</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td class="py-2 pr-4 font-bold text-red-700">0,90%</td>
+                                <td class="py-2 pr-4 font-bold text-red-700">11,35%</td>
+                                <td class="py-2 pr-4 font-bold text-red-700">R$ 2.644</td>
+                                <td class="py-2 pr-4 font-bold text-red-700">R$ 951.838</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Repare que uma diferença de apenas <strong class="text-slate-900">0,40% ao mês</strong> (de 0,50% para 0,90%) faz você pagar <strong class="text-red-600">R$ 304.422 a mais</strong> — praticamente o valor do imóvel novamente. É por isso que negociar a taxa é a decisão mais importante do financiamento.</p>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Como os Juros Compostos Trabalham Contra Você no Financiamento</h2>
+                <p>No sistema de amortização, especialmente na Tabela Price, as primeiras prestações são compostas quase que inteiramente de juros. O saldo devedor diminui muito pouco nos primeiros anos.</p>
+                <p>Veja a evolução do saldo devedor de um financiamento de <strong class="text-slate-900">R$ 300.000</strong> a <strong class="text-slate-900">0,70% ao mês</strong> em 30 anos:</p>
+                <div class="bg-slate-50 border border-slate-200 rounded-xl p-6 overflow-x-auto">
+                    <table class="w-full text-sm">
+                        <thead>
+                            <tr class="border-b border-slate-300 text-slate-900 font-bold">
+                                <th class="text-left py-2 pr-4">Ano</th>
+                                <th class="text-left py-2 pr-4">Saldo Devedor</th>
+                                <th class="text-left py-2 pr-4">Juros Pagos no Ano</th>
+                                <th class="text-left py-2 pr-4">Amortização no Ano</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200">
+                            <tr>
+                                <td class="py-2 pr-4">1</td>
+                                <td class="py-2 pr-4">R$ 296.815</td>
+                                <td class="py-2 pr-4">R$ 24.421</td>
+                                <td class="py-2 pr-4">R$ 3.185</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">5</td>
+                                <td class="py-2 pr-4">R$ 278.503</td>
+                                <td class="py-2 pr-4">R$ 22.460</td>
+                                <td class="py-2 pr-4">R$ 5.146</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">10</td>
+                                <td class="py-2 pr-4">R$ 245.218</td>
+                                <td class="py-2 pr-4">R$ 19.103</td>
+                                <td class="py-2 pr-4">R$ 8.503</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">15</td>
+                                <td class="py-2 pr-4">R$ 199.868</td>
+                                <td class="py-2 pr-4">R$ 14.583</td>
+                                <td class="py-2 pr-4">R$ 13.023</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">20</td>
+                                <td class="py-2 pr-4">R$ 135.570</td>
+                                <td class="py-2 pr-4">R$ 8.726</td>
+                                <td class="py-2 pr-4">R$ 18.880</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2 pr-4">25</td>
+                                <td class="py-2 pr-4">R$ 43.309</td>
+                                <td class="py-2 pr-4">R$ 2.853</td>
+                                <td class="py-2 pr-4">R$ 24.753</td>
+                            </tr>
+                            <tr class="bg-emerald-50">
+                                <td class="py-2 pr-4 font-bold text-emerald-700">30</td>
+                                <td class="py-2 pr-4 font-bold text-emerald-700">R$ 0</td>
+                                <td class="py-2 pr-4 font-bold text-emerald-700">R$ 0</td>
+                                <td class="py-2 pr-4 font-bold text-emerald-700">R$ 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>Percebeu? Nos <strong class="text-red-600">primeiros 5 anos</strong>, você paga mais de <strong class="text-slate-900">R$ 112.000</strong> em prestações, mas o saldo devedor cai apenas <strong class="text-slate-900">R$ 21.497</strong>. Os juros compostos estão devorando mais de 80% do que você paga. É só depois de 15 anos que a amortização começa a superar os juros.</p>
+                <div class="bg-red-50 border border-red-200 rounded-xl p-5 text-sm">
+                    <p class="font-bold text-red-800 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4"></i> A realidade:</p>
+                    <p class="text-red-700">Se você leva 30 anos para pagar, paga <em>mais de 2,6 vezes</em> o valor do imóvel. Um imóvel de R$ 300.000 custa cerca de R$ 784.000 no final. Essa é a força dos juros compostos trabalhando contra você.</p>
+                </div>
+
+                <h2 class="text-2xl font-bold text-slate-900 mt-10 mb-4">Como Minimizar o Efeito dos Juros Compostos</h2>
+                <p>A boa notícia é que você pode usar a mesma matemática a seu favor. Aqui estão as estratégias mais eficazes para reduzir drasticamente o impacto dos juros compostos:</p>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-8 mb-3">1. Amortize nos Primeiros Anos</h3>
+                <p>Uma amortização extra de <strong class="text-slate-900">R$ 10.000</strong> no primeiro ano reduz o saldo devedor <em>antes</em> que os juros compostos se acumulem sobre ele. Esse mesmo valor amortizado no ano 20 tem um impacto muito menor, porque o saldo já está baixo. <strong class="text-slate-900">Quanto antes você amortizar, mais juros futuros você elimina.</strong></p>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-8 mb-3">2. Prefira o Sistema SAC (Amortização Constante)</h3>
+                <p>No SAC, a amortização mensal é fixa, então o saldo devedor cai mais rápido desde o início. As parcelas começam mais altas, mas diminuem com o tempo — e você paga <strong class="text-slate-900">muito menos juros totais</strong> do que na Tabela Price.</p>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-8 mb-3">3. Use o FGTS para Amortizar</h3>
+                <p>Se você tem financiamento pela Caixa, pode usar o saldo do FGTS a cada dois anos para abater o saldo devedor. É dinheiro que estava parado e pode eliminar anos de juros.</p>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-8 mb-3">4. Refinancie se a Taxa Cair</h3>
+                <p>Se as taxas de juros do mercado caírem significativamente, refinanciar o saldo devedor a uma taxa menor pode gerar economias enormes — especialmente nos primeiros anos, quando o saldo ainda é alto e o prazo é longo.</p>
+
+                <h3 class="text-xl font-bold text-slate-900 mt-8 mb-3">5. Encurte o Prazo</h3>
+                <p>Reduzir o prazo de 30 para 20 anos aumenta a prestação, mas reduz drasticamente os juros totais. Um financiamento de R$ 300.000 a 0,70% ao mês em 20 anos custa cerca de <strong class="text-slate-900">R$ 554.000</strong> no total — contra <strong class="text-slate-900">R$ 784.000</strong> em 30 anos. Uma economia de mais de <strong class="text-emerald-600">R$ 230.000</strong>.</p>
+
+                <div class="bg-emerald-50 border border-emerald-200 rounded-xl p-6 text-sm mt-8">
+                    <p class="font-bold text-emerald-800 flex items-center gap-2 text-base"><i data-lucide="target" class="w-5 h-5"></i> Conclusão</p>
+                    <p class="text-emerald-700 mt-2">Os juros compostos são a força mais poderosa no financiamento imobiliário. Quando você entende como eles funcionam, percebe que cada real amortizado no início do contrato vale muito mais do que o mesmo real pago no final. Use essa consciência a seu favor: <strong class="text-emerald-800">ame o simulador, estude os números e amortize cedo.</strong></p>
+                </div>
+            </div>
         </article>
     </main>
 

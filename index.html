@@ -208,16 +208,28 @@
                         <div class="border-t pt-4 border-slate-100 mb-4">
                             <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Tipo da Taxa de Juros</label>
                             <div class="flex flex-wrap gap-4 text-sm">
-                                <label class="flex items-center gap-2 cursor-pointer group">
-                                    <input type="radio" name="tipo-taxa-port" value="nominal" checked class="text-emerald-600 focus:ring-emerald-500">
-                                    <span class="text-slate-700 font-medium group-hover:text-emerald-700 transition-colors">Nominal</span>
-                                    <span class="text-[10px] text-slate-400">(padrão mercado: anual é 12)</span>
-                                </label>
-                                <label class="flex items-center gap-2 cursor-pointer group">
-                                    <input type="radio" name="tipo-taxa-port" value="efetiva" class="text-emerald-600 focus:ring-emerald-500">
-                                    <span class="text-slate-700 font-medium group-hover:text-emerald-700 transition-colors">Efetiva (CET)</span>
-                                    <span class="text-[10px] text-slate-400">((1 + i)^(1/12) - 1)</span>
-                                </label>
+                                <div class="group relative">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="tipo-taxa-port" value="nominal" checked class="text-emerald-600 focus:ring-emerald-500">
+                                        <span class="text-slate-700 font-semibold group-hover:text-emerald-700 transition-colors">Nominal</span>
+                                        <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    </label>
+                                    <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-64 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                        Taxa contratual padrão de mercado. Para obter a taxa mensal, divide-se a taxa anual por 12.
+                                        <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                    </div>
+                                </div>
+                                <div class="group relative">
+                                    <label class="flex items-center gap-2 cursor-pointer">
+                                        <input type="radio" name="tipo-taxa-port" value="efetiva" class="text-emerald-600 focus:ring-emerald-500">
+                                        <span class="text-slate-700 font-semibold group-hover:text-emerald-700 transition-colors">Efetiva (CET)</span>
+                                        <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    </label>
+                                    <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-64 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                        Taxa que considera juros compostos. O cálculo mensal é feito pela fórmula (1 + taxa anual)^(1/12) - 1, resultando em uma taxa mensal ligeiramente menor que a divisão simples.
+                                        <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -336,14 +348,14 @@
                         </div>
                     </div>
 
-                    <!-- SE???fO FAQ - PERGUNTAS FREQUENTES (Reposicionada) -->
+                    <!-- SEÇÃO FAQ - PERGUNTAS FREQUENTES -->
                     <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
-                        <div class="mb-6">
+                        <div class="mb-4">
                             <h3 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Dívidas Frequentes</h3>
                             <h2 class="text-lg font-bold text-slate-800">Tudo sobre Amortização</h2>
                         </div>
 
-                        <div class="grid grid-cols-1 gap-4">
+                        <div class="max-h-[420px] overflow-y-auto custom-scrollbar space-y-3 pr-1">
                             <!-- FAQ Item 1 -->
                             <div class="border border-slate-100 rounded-xl overflow-hidden">
                                 <button onclick="toggleFaq(1)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
@@ -351,7 +363,7 @@
                                     <i data-lucide="plus" id="faq-icon-1" class="w-4 h-4 text-emerald-600 transition-transform"></i>
                                 </button>
                                 <div id="faq-content-1" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
-                                    Reduzir o <strong>prazo</strong> é quase sempre a melhor opção para economizar o máximo de juros possível.
+                                    Reduzir o <strong>prazo</strong> é quase sempre a melhor opção para economizar o máximo de juros possível. Quando você reduz o prazo, mantém o valor da parcela e encurta o tempo de pagamento, o que diminui drasticamente o montante total de juros pagos ao longo do contrato. Já reduzir a parcela alonga o prazo e, embora alivie o fluxo de caixa mensal, aumenta o custo total com juros.
                                 </div>
                             </div>
 
@@ -362,7 +374,7 @@
                                     <i data-lucide="plus" id="faq-icon-2" class="w-4 h-4 text-emerald-600 transition-transform"></i>
                                 </button>
                                 <div id="faq-content-2" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
-                                    O banco pode cobrar taxa de avaliação e haverá custos cartorários, mas a economia de juros costuma compensar.
+                                    O banco pode cobrar taxa de avaliação do imóvel (R\$ 800 a R\$ 1.500) e haverá custos cartorários para lavratura da nova escritura (em torno de R\$ 2.000 a R\$ 4.000, dependendo do valor do imóvel). Apesar desses custos iniciais, a economia de juros ao longo dos anos costuma compensar o investimento já nos primeiros meses. Muitos bancos oferecem isenção ou subsídio dessas taxas como condição para a migração.
                                 </div>
                             </div>
 
@@ -373,12 +385,202 @@
                                     <i data-lucide="plus" id="faq-icon-3" class="w-4 h-4 text-emerald-600 transition-transform"></i>
                                 </button>
                                 <div id="faq-content-3" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
-                                    Sim! O FGTS pode ser usado a cada 2 anos para abater o saldo devedor ou as prestações.
+                                    Sim! O FGTS pode ser usado a cada 2 anos para abater o saldo devedor ou as prestações do SFH. O limite é de até 80% do saldo devedor e o valor mínimo equivale a 3 parcelas. É obrigatório ter pelo menos 3 anos de contrato e não ter usado o FGTS para esse fim nos últimos 2 anos. A solicitação é feita diretamente na Caixa Econômica Federal.
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(4)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>Portabilidade vale a pena sempre?</span>
+                                    <i data-lucide="plus" id="faq-icon-4" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-4" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    Não em todos os casos. A portabilidade compensa quando a diferença entre a taxa atual e a nova taxa é de pelo menos 1 a 2 pontos percentuais, considerando os custos de transferência (avaliação, cartório, tarifas). Para saldos menores que R\$ 100 mil, a economia pode não cobrir as despesas iniciais. Use nosso simulador para comparar os cenários antes de decidir.
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(5)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>Diferença entre SAC e Price?</span>
+                                    <i data-lucide="plus" id="faq-icon-5" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-5" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    No sistema <strong>SAC</strong>, as parcelas começam mais altas e diminuem com o tempo — a amortização do principal é constante. Na <strong>Tabela Price</strong>, as parcelas são fixas do início ao fim, mas a proporção de juros é maior no começo. Para quem pode pagar parcelas iniciais mais altas, o SAC é mais vantajoso pois o total de juros pagos é menor. A Price é indicada para quem prefere previsibilidade orçamentária.
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 6 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(6)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>Amortização reduz o valor das parcelas?</span>
+                                    <i data-lucide="plus" id="faq-icon-6" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-6" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    Depende da modalidade escolhida. Ao amortizar, você pode optar por <strong>reduzir o prazo</strong> (mantém a parcela, quita antes) ou <strong>reduzir a parcela</strong> (mantém o prazo, paga menos por mês). A primeira opção é matematicamente mais vantajosa, pois o saldo devedor diminui mais rápido e os juros futuros são drasticamente reduzidos. A segunda opção alivia o orçamento mensal, mas prolonga o pagamento de juros.
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- SEÇÃO DE CONTEÚDO SEO - ARTIGOS + 3 ADSENSE INTERCALADOS -->
+                    <div class="flex flex-col gap-6">
+                        <div class="mb-2 px-2">
+                            <h3 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Inteligência Financeira</h3>
+                            <h2 class="text-2xl font-black text-slate-900 tracking-tight">Guia de Planejamento de Ativos</h2>
+                            <p class="text-sm text-slate-500 mt-2 text-balance">Explore nossos manuais técnicos e estratégias definitivas para reduzir juros e quitar seu imóvel antes do prazo.</p>
+                        </div>
+
+                        <!-- Card 1 -->
+                        <a href="manual-pratico-portabilidade.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo_1_Manual Aba1.png" alt="Aba 1" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Portabilidade de Crédito</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Descubra como migrar sua dívida para reduzir juros drasticamente hoje mesmo. Aprenda a preencher os dados e veja a economia real na troca de banco.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 2 -->
+                        <a href="manual-pratico-amortizacao.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo_2_Manual Aba2.png" alt="Aba 2" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Plano de Amortização</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Aprenda a destruir o saldo devedor e quitar seu imóvel anos antes do prazo. Configure aportes mensais e anuais de forma estratégica.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- AdSense intercalado 1/3 -->
+                        <div class="w-full bg-slate-100 border border-slate-200 rounded-2xl h-[120px] flex items-center justify-center">
+                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <a href="guia-pagar-financiamento-mais-rapido.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo_3_Como Pagar Financiamento Mais Rápido.png" alt="Guia 3" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Quitação Acelerada</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Estratégias definitivas para reduzir o tempo da sua dívida pela metade, aproveitando FGTS, 13é e bônus de forma cirúrgica.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 4 -->
+                        <a href="amortizacao-prazo-vs-parcela.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Atigo 4 - prazo_vs_parcela.png" alt="Guia 4" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Prazo ou Parcela?</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Entenda a diferença matemática implacável entre os dois modelos e descubra qual opção gera a maior economia real para o seu bolso.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 5 -->
+                        <a href="tabela-sac-vs-price-comparativo.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 5 - sac_vs_price.png" alt="Guia 5" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Tabela SAC vs Price</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">O comparativo definitivo entre os principais sistemas de amortização do mercado brasileiro e como eles impactam o custo total da dívida.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- AdSense intercalado 2/3 -->
+                        <div class="w-full bg-slate-100 border border-slate-200 rounded-2xl h-[120px] flex items-center justify-center">
+                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <a href="como-diminuir-juros-financiamento.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 6 - estrategias_reducao_juros.png" alt="Guia 6" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Reduzir Juros</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Conheça os mecanismos legais de renegociação interna e o poder da portabilidade para transferir sua dívida para taxas menores.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 7 -->
+                        <a href="vale-a-pena-amortizar-ou-investir.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 7 - amortizar_vs_investir.png" alt="Guia 7" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Amortizar ou Investir?</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Colocamos os números na balanósa. Veja por que a amortização é considerada um investimento sem risco com retorno garantido.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 8 -->
+                        <a href="artigo-8-uso-fgts.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 8 - uso_fgts_ilustracao.png" alt="Guia 8" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Uso do FGTS</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Muitos brasileiros têm um valor considerável parado na conta do FGTS rendendo pouco. Usá-lo para amortizar é uma estratégia inteligente.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- AdSense intercalado 3/3 -->
+                        <div class="w-full bg-slate-100 border border-slate-200 rounded-2xl h-[120px] flex items-center justify-center">
+                            <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+                            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                        </div>
+
+                        <!-- Card 9 -->
+                        <a href="artigo-9-juros-abusivos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 9 - juros_abusivos_ilustracao.png" alt="Guia 9" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-red-100 text-red-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Alerta</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Abusivos</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Sentir que seu financiamento está com parcelas acima do mercado é um sinal de alerta. Entenda o que pode ser contestado.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
+
+                        <!-- Card 10 -->
+                        <a href="artigo-10-juros-compostos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                            <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                                <img src="Artigo 10 - juros_compostos_mestre.png" alt="Guia 10" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                            </div>
+                            <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                                <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                                <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Compostos</h4>
+                                <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Albert Einstein teria chamado os juros compostos de a oitava maravilha do mundo. No financiamento, eles trabalham contra você.</p>
+                                <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </a>
                     </div>
+                </div>
 
                 <!-- Coluna Direita Estática da Portabilidade (4 colunas) -->
                 <div id="sidebar-container" class="lg:col-span-4 flex flex-col gap-6">
@@ -389,13 +591,13 @@
                             <i data-lucide="line-chart" class="w-32 h-32"></i>
                         </div>
 
-                        <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-1">Estudo de Economia Estimado</h3>
+                        <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-1">Economia Estimada</h3>
                         <p class="text-[11px] text-slate-400 mb-6">Auditoria comparativa de portabilidade projetada até a quitação.</p>
 
                         <!-- Disclaimer de Seguranósa -->
                         <div class="bg-amber-950/40 border border-amber-900/50 rounded-lg p-3 mb-6">
                             <p class="text-[10px] text-amber-200 leading-tight">
-                                <strong class="font-bold uppercase">Aviso Legal:</strong> Resultados são estimativas baseadas em simulações matemáticas e não constituem garantia de taxa ou aprovação de crédito pelas instituições financeiras.
+                                <strong class="font-bold uppercase">Aviso:</strong> Resultados são estimativas baseadas em simulações matemáticas e não constituem garantia de taxa ou aprovação de crédito pelas instituições financeiras.
                             </p>
                         </div>
 
@@ -436,14 +638,6 @@
                             </div>
                         </div>
 
-                        <!-- Botão Gerador de PDF (Alta Autoridade) -->
-                        <div class="mt-5">
-                            <button type="button" onclick="gerarPDF()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-xs flex items-center justify-center gap-2 transition shadow-md">
-                                <i data-lucide="file-text" class="w-4 h-4"></i>
-                                Baixar meu Planejamento em PDF
-                            </button>
-                        </div>
-
                         <!-- Detalhamento de Fórmulas e Metodologia (Dropdown) -->
                         <div class="mt-6 border-t border-slate-800 pt-4">
                             <button onclick="toggleFormula()" class="text-xs font-bold text-slate-400 hover:text-white flex items-center justify-between w-full transition-colors focus:outline-none">
@@ -462,11 +656,8 @@
                     <!-- Formulário de Captação / Funil de Transação de Leads -->
                     <div id="lead-form-container" class="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-1 shadow-lg transition-all duration-300">
                         <div class="bg-white rounded-[22px] p-5 h-full">
-                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider inline-block mb-3">
-                                Correspondência Bancária Homologada
-                            </span>
-                            <h3 class="text-lg font-extrabold text-slate-900 leading-tight mb-2">Descubra Como Reduzir os Juros do Seu Imóvel</h3>
-                            <p class="text-xs text-slate-600 mb-4">Conectamos você a parceiros homologados capazes de reduzir suas parcelas e juros imobiliários de forma 100% gratuita.</p>
+                            <h3 class="text-lg font-extrabold text-slate-900 leading-tight mb-2">Solicite Propostas de Correspondentes Bancários</h3>
+                            <p class="text-xs text-slate-600 mb-4">Envie sua simulação para correspondentes bancários credenciados e receba propostas personalizadas de instituições parceiras.</p>
                             
                             <form id="lead-form" class="space-y-3">
                                 <div>
@@ -478,16 +669,8 @@
                                     <input type="tel" id="lead-whatsapp" placeholder="WhatsApp (DDD + Número)" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-700">
                                 </div>
                                 <div>
-                                    <label for="lead-banco" class="sr-only">Banco Atual</label>
-                                    <select id="lead-banco" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-600">
-                                        <option value="">Qual o seu banco financiador atual?</option>
-                                        <option value="caixa">Caixa Econômica Federal</option>
-                                        <option value="itau">Itaú Unibanco</option>
-                                        <option value="bradesco">Bradesco</option>
-                                        <option value="santander">Santander</option>
-                                        <option value="banco-brasil">Banco do Brasil</option>
-                                        <option value="outros">Outras Instituiéées</option>
-                                    </select>
+                                    <label for="lead-parcela-atual" class="sr-only">Valor aproximado da sua parcela atual</label>
+                                    <input type="text" id="lead-parcela-atual" placeholder="Valor aproximado da sua parcela atual (R$)" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-700">
                                 </div>
 
                                 <!-- Checkbox Termos LGPD (Rigoroso) -->
@@ -503,17 +686,10 @@
                                     Solicitar Análise de Especialista
                                 </button>
                             </form>
-                            <p class="text-[10px] text-center text-slate-500 mt-3">*Seus dados cadastrais e técnicos de simulação estáo protegidos sob conformidade com a LGPD e seráo compartilhados estritamente com assessores de crédito para fins de análise formal.</p>
+                            <p class="text-[10px] text-center text-slate-500 mt-3">*Seus dados cadastrais e técnicos de simulação estão protegidos sob conformidade com a LGPD e serão compartilhados estritamente com assessores de crédito para fins de análise formal.</p>
                         </div>
                     </div>
 
-                    <!-- AdSense Sidebar Column Box -->
-                    <div id="ad-sidebar" class="hidden w-full bg-slate-100 border border-slate-200 rounded-2xl h-[320px] flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner">
-                        <div class="flex items-center gap-2 mb-1">
-                            <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
-                            <span class="text-slate-600">Publicidade (AdSense - 300x250)</span>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -618,16 +794,28 @@
                     <div class="border-t border-slate-100 pt-4 mb-2">
                         <label class="block text-xs font-bold text-slate-600 uppercase mb-2">Tipo da Taxa de Juros</label>
                         <div class="flex flex-wrap gap-4 text-sm">
-                            <label class="flex items-center gap-2 cursor-pointer group">
-                                <input type="radio" name="tipo-taxa-dest" value="nominal" checked class="text-emerald-600 focus:ring-emerald-500">
-                                <span class="text-slate-700 font-medium group-hover:text-emerald-700 transition-colors">Nominal</span>
-                                <span class="text-[10px] text-slate-400">(padrão mercado: anual é 12)</span>
-                            </label>
-                            <label class="flex items-center gap-2 cursor-pointer group">
-                                <input type="radio" name="tipo-taxa-dest" value="efetiva" class="text-emerald-600 focus:ring-emerald-500">
-                                <span class="text-slate-700 font-medium group-hover:text-emerald-700 transition-colors">Efetiva (CET)</span>
-                                <span class="text-[10px] text-slate-400">((1 + i)^(1/12) - 1)</span>
-                            </label>
+                            <div class="group relative">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="tipo-taxa-dest" value="nominal" checked class="text-emerald-600 focus:ring-emerald-500">
+                                    <span class="text-slate-700 font-semibold group-hover:text-emerald-700 transition-colors">Nominal</span>
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-64 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Taxa contratual padrão de mercado. Para obter a taxa mensal, divide-se a taxa anual por 12.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                            </div>
+                            <div class="group relative">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="radio" name="tipo-taxa-dest" value="efetiva" class="text-emerald-600 focus:ring-emerald-500">
+                                    <span class="text-slate-700 font-semibold group-hover:text-emerald-700 transition-colors">Efetiva (CET)</span>
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-64 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Taxa que considera juros compostos. O cálculo mensal é feito pela fórmula (1 + taxa anual)^(1/12) - 1, resultando em uma taxa mensal ligeiramente menor que a divisão simples.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -851,170 +1039,7 @@
             </div>
         </div>
 
-        <!-- SE???fO DE CONTE?sDO SEO - LISTA VERTICAL DE ARTIGOS -->
-        <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
-            
-            <!-- Coluna de Artigos (Alinhada com a calculadora principal) -->
-            <div class="lg:col-span-8 flex flex-col gap-6">
-                <div class="mb-4 px-2">
-                    <h3 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Inteligência Financeira</h3>
-                    <h2 class="text-2xl font-black text-slate-900 tracking-tight">Guia de Planejamento de Ativos</h2>
-                    <p class="text-sm text-slate-500 mt-2 text-balance">Explore nossos manuais técnicos e estratégias definitivas para reduzir juros e quitar seu imóvel antes do prazo.</p>
-                </div>
 
-                <!-- Card 1 -->
-                <a href="manual-pratico-portabilidade.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo_1_Manual Aba1.png" alt="Aba 1" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Portabilidade de Crédito</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Descubra como migrar sua dívida para reduzir juros drasticamente hoje mesmo. Aprenda a preencher os dados e veja a economia real na troca de banco.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 2 -->
-                <a href="manual-pratico-amortizacao.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo_2_Manual Aba2.png" alt="Aba 2" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Plano de Amortização</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Aprenda a destruir o saldo devedor e quitar seu imóvel anos antes do prazo. Configure aportes mensais e anuais de forma estratégica.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 3 -->
-                <a href="guia-pagar-financiamento-mais-rapido.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo_3_Como Pagar Financiamento Mais Rápido.png" alt="Guia 3" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Quitação Acelerada</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Estratégias definitivas para reduzir o tempo da sua dívida pela metade, aproveitando FGTS, 13é e bônus de forma cirúrgica.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 4 -->
-                <a href="amortizacao-prazo-vs-parcela.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Atigo 4 - prazo_vs_parcela.png" alt="Guia 4" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Prazo ou Parcela?</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Entenda a diferença matemática implacável entre os dois modelos e descubra qual opção gera a maior economia real para o seu bolso.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 5 -->
-                <a href="tabela-sac-vs-price-comparativo.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 5 - sac_vs_price.png" alt="Guia 5" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Tabela SAC vs Price</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">O comparativo definitivo entre os principais sistemas de amortização do mercado brasileiro e como eles impactam o custo total da dívida.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 6 -->
-                <a href="como-diminuir-juros-financiamento.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 6 - estrategias_reducao_juros.png" alt="Guia 6" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Reduzir Juros</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Conheça os mecanismos legais de renegociação interna e o poder da portabilidade para transferir sua dívida para taxas menores.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 7 -->
-                <a href="vale-a-pena-amortizar-ou-investir.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 7 - amortizar_vs_investir.png" alt="Guia 7" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Amortizar ou Investir?</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Colocamos os números na balanósa. Veja por que a amortização é considerada um investimento sem risco com retorno garantido.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 8 -->
-                <a href="artigo-8-uso-fgts.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 8 - uso_fgts_ilustracao.png" alt="Guia 8" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Uso do FGTS</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Muitos brasileiros têm um valor considerável parado na conta do FGTS rendendo pouco. Usá-lo para amortizar é uma estratégia inteligente.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 9 -->
-                <a href="artigo-9-juros-abusivos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 9 - juros_abusivos_ilustracao.png" alt="Guia 9" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-red-100 text-red-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Alerta</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Abusivos</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Sentir que seu financiamento está com parcelas acima do mercado é um sinal de alerta. Entenda o que pode ser contestado.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-
-                <!-- Card 10 -->
-                <a href="artigo-10-juros-compostos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
-                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
-                        <img src="Artigo 10 - juros_compostos_mestre.png" alt="Guia 10" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
-                    </div>
-                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
-                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
-                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Compostos</h4>
-                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Albert Einstein teria chamado os juros compostos de a oitava maravilha do mundo. No financiamento, eles trabalham contra você.</p>
-                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
-                    </div>
-                </a>
-            </div>
-
-            <!-- Coluna Lateral: AdSense Vertical Estendido -->
-            <div class="lg:col-span-4 flex flex-col">
-                <div class="sticky top-8 w-full bg-slate-100 border border-slate-200 rounded-3xl h-full min-h-[1200px] flex flex-col items-center justify-center text-slate-500 text-xs font-semibold shadow-inner p-6 text-center">
-                    <div class="flex flex-col items-center gap-4">
-                        <i data-lucide="layout" class="w-8 h-8 opacity-30"></i>
-                        <span class="uppercase tracking-widest text-slate-600">Publicidade Premium</span>
-                        <div class="w-full h-[1000px] flex items-center justify-center">
-                            <ins class="adsbygoogle"
-                                 style="display:block"
-                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                                 data-ad-slot="XXXXXXXXXX"
-                                 data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
-                            <script>
-                                 (adsbygoogle = window.adsbygoogle || []).push({});
-                            </script>
-                        </div>
-                    </div>
-                    <p class="text-[10px] text-slate-400/70 mt-4">Anúncios baseados em seu perfil de crédito imobiliário</p>
-                </div>
-            </div>
-        </div>
 
         <!-- AdSense de Base -->
         <div class="mt-12 flex justify-center w-full">
@@ -1052,7 +1077,7 @@
                 Esta plataforma é uma ferramenta de simulação matemática desenvolvida para estimar variações de custos com base nas metodologias financeiras comuns aplicadas a contratos imobiliários sob regras vigentes de mercado. O <strong>Resultado de Economia Projetada</strong> e os quadros comparativos gerados por esta calculadora não constituem de forma alguma uma garantia contratual de aprovação de crédito, oferta vinculante de faturamento ou promessa de execução de taxa por qualquer instituição financeira.
             </p>
             <p class="text-[11px] leading-relaxed mb-6 text-justify sm:text-center text-slate-300">
-                A aprovação de portabilidade de financiamento está sujeita a vistorias e análises cadastrais individuais conduzidas pelas instituições receptoras da dívida, além de custos cartorários de lavratura de nova escritura imobiliária sob a Lei da Portabilidade (Resolução CMN nós 4.292/2013). Atuamos exclusivamente como um hub digital de originação, conexão e curadoria de dados de intenção para correspondentes bancários credenciados. Não realizamos empréstimos diretos e não transacionamos valores financeiros de nenhuma natureza em nossos servidores.
+                A aprovação de portabilidade de financiamento está sujeita a vistorias e análises cadastrais individuais conduzidas pelas instituições receptoras da dívida, além de custos cartorários de lavratura de nova escritura imobiliária sob a Lei da Portabilidade (Resolução CMN nós 4.292/2013).                     Atuamos exclusivamente como um hub digital de originação, conexão e curadoria de dados de intenção para correspondentes bancários credenciados. Não realizamos empréstimos diretos e não transacionamos valores financeiros de nenhuma natureza em nossos servidores. <strong>Importante:</strong> Nossa plataforma não realiza contato direto com o usuário, não envia boletos, não efetua cobranças e não solicita transferências bancárias em nenhuma etapa. Desconfie de qualquer contato que peça pagamento antecipado, depósito em conta pessoal ou dados bancários sigilosos. Toda comunicação oficial ocorrerá exclusivamente pelos canais informados pelos correspondentes bancários homologados após sua solicitação de análise.
             </p>
             <div class="border-t border-slate-800 pt-6">
                 <div class="flex flex-wrap justify-center gap-4 mb-4 text-[10px] font-bold text-slate-300 uppercase tracking-widest">

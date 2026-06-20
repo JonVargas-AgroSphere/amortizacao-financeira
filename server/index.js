@@ -49,13 +49,13 @@ if (!fs.existsSync(LEADS_FILE)) {
 }
 
 app.post('/api/leads', (req, res) => {
-    const { nome, whatsapp, banco, economiaTotal, parcelaNova, data } = req.body;
+    const { nome, whatsapp, parcelaAtual, economiaTotal, parcelaNova, data } = req.body;
 
     if (!nome || !whatsapp) {
         return res.status(400).json({ error: 'Nome e WhatsApp são obrigatórios' });
     }
 
-    const lead = { nome, whatsapp, banco, economiaTotal, parcelaNova, data: data || new Date().toISOString(), ip: req.ip };
+    const lead = { nome, whatsapp, parcelaAtual, economiaTotal, parcelaNova, data: data || new Date().toISOString(), ip: req.ip };
 
     try {
         const leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8'));
