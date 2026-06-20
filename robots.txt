@@ -5,4 +5,4 @@ Allow: /
 # Disallow: /admin/
 
 # Link para o Sitemap
-Sitemap: https://amortizacaofinanceira.com.br/sitemap.xml
+Sitemap: https://amortizacao-financeira.onrender.com/sitemap.xml

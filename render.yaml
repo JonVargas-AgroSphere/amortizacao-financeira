@@ -15,6 +15,6 @@ services:
       - key: WHATSAPP_NUMBER
         value: 5551989840198
       - key: SITE_DOMAIN
-        value: amortizacaofinanceira.com.br
+        value: amortizacao-financeira.onrender.com
       - key: ADMIN_TOKEN
         sync: false
