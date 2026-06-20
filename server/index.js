@@ -11,6 +11,20 @@ const ROOT = path.join(__dirname, '..');
 
 app.use(express.json());
 
+const rateLimit = new Map();
+function rateLimiter(req, res, next) {
+    const ip = req.ip || req.connection.remoteAddress;
+    const now = Date.now();
+    const windowMs = 60000;
+    const maxReqs = 5;
+    if (!rateLimit.has(ip)) rateLimit.set(ip, []);
+    const timestamps = rateLimit.get(ip).filter(t => now - t < windowMs);
+    if (timestamps.length >= maxReqs) return res.status(429).json({ error: 'Muitas requisições. Aguarde 1 minuto.' });
+    timestamps.push(now);
+    rateLimit.set(ip, timestamps);
+    next();
+}
+
 // Substitui placeholders em arquivos servidos estaticamente
 function injectEnv(req, res, next) {
     let filePath = path.join(ROOT, req.path);
@@ -48,14 +62,19 @@ if (!fs.existsSync(LEADS_FILE)) {
     fs.writeFileSync(LEADS_FILE, '[]', 'utf-8');
 }
 
-app.post('/api/leads', (req, res) => {
+app.post('/api/leads', rateLimiter, (req, res) => {
     const { nome, whatsapp, parcelaAtual, economiaTotal, parcelaNova, data } = req.body;
 
     if (!nome || !whatsapp) {
         return res.status(400).json({ error: 'Nome e WhatsApp são obrigatórios' });
     }
+    const nomeTrim = nome.trim().slice(0, 100);
+    const whatsappClean = whatsapp.replace(/\D/g, '').slice(0, 15);
+    if (whatsappClean.length < 10) {
+        return res.status(400).json({ error: 'WhatsApp inválido. Informe um número com DDD (ex: 5511999999999).' });
+    }
 
-    const lead = { nome, whatsapp, parcelaAtual, economiaTotal, parcelaNova, data: data || new Date().toISOString(), ip: req.ip };
+    const lead = { nome: nomeTrim, whatsapp: whatsappClean, parcelaAtual, economiaTotal, parcelaNova, data: data || new Date().toISOString(), ip: req.ip };
 
     try {
         const leads = JSON.parse(fs.readFileSync(LEADS_FILE, 'utf-8'));

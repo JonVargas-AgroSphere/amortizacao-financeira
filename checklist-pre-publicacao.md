@@ -6,14 +6,14 @@
 
 - [x] **Server injection:** `server/index.js` agora substitui placeholders via `.env` (dotenv instalado)
 - [x] **.env.example:** Criado com todas as variáveis (GA4_ID, ADSENSE_CLIENT, WHATSAPP_NUMBER, SITE_DOMAIN, ADMIN_TOKEN)
-- [ ] **Copiar `.env.example` para `.env` e preencher valores reais:**
-  - `GA4_ID=G-XXXXXXXXXX` → Seu ID do Google Analytics
-  - `ADSENSE_CLIENT=ca-pub-XXXXXXXXXXXXXXXX` → Seu ID do AdSense
-  - `WHATSAPP_NUMBER=5511999999999` → Número do corretor
-  - `SITE_DOMAIN=seudominio.com.br` → Domínio real
-  - `ADMIN_TOKEN=<token-seguro>` → Gerar com: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"`
+- [x] **Copiar `.env.example` para `.env` e preencher valores reais:**
+  - `GA4_ID=G-J6CQG19L6Z`
+  - `ADSENSE_CLIENT=ca-pub-6191460191140933`
+  - `WHATSAPP_NUMBER=5551989840198`
+  - `SITE_DOMAIN=amortizacaofinanceira.com.br`
+  - `ADMIN_TOKEN=<gerado>`
 - [x] **Sitemap:** Já reflete `amortizacaofinanceira.com.br` (verificar se é o domínio real)
-- [ ] **Server:** Definir `ADMIN_TOKEN` no `.env` com uma senha forte para proteger GET /api/leads
+- [x] **Server:** Definir `ADMIN_TOKEN` no `.env` com uma senha forte para proteger GET /api/leads
 
 ### 🟡 RECOMENDADO (ajustes finos)
 
@@ -22,22 +22,22 @@
 - [x] **Twitter Cards:** Adicionados em todas as páginas
 - [x] **Structured Data (JSON-LD):** Article, CollectionPage e WebApplication conforme cada página
 - [x] **Rebuild CSS:** `npm run build:css` executado
-- [ ] **Codificação UTF-8:** Verificada e corrigida em todos os 13 arquivos HTML
-- [ ] **HTTPS:** Configurar certificado SSL no servidor (dados de leads trafegam)
+- [x] **Codificação UTF-8:** Verificada e corrigida em todos os 15 arquivos HTML
+- [x] **HTTPS:** Render.com fornece SSL automático
 - [ ] **Logotipo fallback:** A imagem `placehold.co` no `onerror` é útil mas considera hospedar um fallback local
 
 ### 🟠 IMPORTANTE (produção)
 
 - [ ] **Limitar prazo máximo:** Já implementado (cap 600 meses). Confirme se esse limite atende seus cenários
-- [ ] **Rate limiting:** Considerar adicionar rate limit no POST /api/leads (evitar spam)
-- [ ] **Sanitização de input no servidor:** Validar formato do WhatsApp no backend
+- [x] **Rate limiting:** Implementado (5 req/min por IP) no POST /api/leads
+- [x] **Sanitização de input no servidor:** WhatsApp validado (10-15 dígitos), nome truncado (100 chars)
 - [ ] **LGPD:** Cookie banner está implementado. Confirmar se a Política de Privacidade cobre todos os dados coletados
 
 ### 🔵 NICE TO HAVE (futuro)
 
 - [ ] **Testes a11y:** Rodar `npx pa11y https://seudominio.com.br` (pa11y já está nas devDependencies)
 - [ ] **Testes unitários:** Criar testes para as funções de cálculo (já auditadas e corrigidas)
-- [ ] **Remover `%APPDATA%/`**: Existe um diretório `%APPDATA%/` na raiz do projeto — verificar se é lixo
+- [x] **Remover `%APPDATA%/`**: Diretório removido e adicionado ao `.gitignore`
 
 ## RESUMO DAS CORREÇÕES JÁ APLICADAS
 
