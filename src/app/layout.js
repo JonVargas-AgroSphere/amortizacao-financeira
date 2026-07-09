@@ -10,7 +10,7 @@ const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
 });
 
-const BASE_URL = "https://www.calculadoramortizacao.com.br";
+const BASE_URL = "https://calculadoramortizacao.com.br";
 
 export const metadata = {
   title: "Amortização Financeira | Simulador de Portabilidade e Amortização SAC/Price",

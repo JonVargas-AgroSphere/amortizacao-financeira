@@ -16,22 +16,22 @@ export async function generateMetadata({ params }) {
   return {
     title: artigo.seo_title,
     description: artigo.description,
-    alternates: { canonical: `https://www.calculadoramortizacao.com.br/artigos/${slug}` },
+    alternates: { canonical: `https://calculadoramortizacao.com.br/artigos/${slug}` },
     openGraph: {
       title: artigo.seo_title,
       description: artigo.description,
-      url: `https://www.calculadoramortizacao.com.br/artigos/${slug}`,
+      url: `https://calculadoramortizacao.com.br/artigos/${slug}`,
       siteName: "Amortização Financeira",
       locale: "pt_BR",
       type: "article",
       publishedTime: "2026-06-10",
-      images: [{ url: `https://www.calculadoramortizacao.com.br/${artigo.image}`, width: 1200, height: 630 }],
+      images: [{ url: `https://calculadoramortizacao.com.br/${artigo.image}`, width: 1200, height: 630 }],
     },
     twitter: {
       card: "summary_large_image",
       title: artigo.seo_title,
       description: artigo.description,
-      images: [`https://www.calculadoramortizacao.com.br/${artigo.image}`],
+      images: [`https://calculadoramortizacao.com.br/${artigo.image}`],
     },
   };
 }
@@ -75,8 +75,8 @@ export default async function ArticlePage({ params }) {
               "@context": "https://schema.org",
               "@type": "BreadcrumbList",
               itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Início", item: "https://www.calculadoramortizacao.com.br/" },
-                { "@type": "ListItem", position: 2, name: "Artigos", item: "https://www.calculadoramortizacao.com.br/artigos" },
+                { "@type": "ListItem", position: 1, name: "Início", item: "https://calculadoramortizacao.com.br/" },
+                { "@type": "ListItem", position: 2, name: "Artigos", item: "https://calculadoramortizacao.com.br/artigos" },
                 { "@type": "ListItem", position: 3, name: artigo.title },
               ],
             },
@@ -85,7 +85,7 @@ export default async function ArticlePage({ params }) {
               "@type": "Article",
               headline: artigo.seo_title.split(" | ")[0],
               description: artigo.description,
-              image: `https://www.calculadoramortizacao.com.br/${artigo.image}`,
+              image: `https://calculadoramortizacao.com.br/${artigo.image}`,
               datePublished: "2026-06-10",
               dateModified: "2026-06-10",
               author: { "@type": "Organization", name: "Amortização Financeira" },

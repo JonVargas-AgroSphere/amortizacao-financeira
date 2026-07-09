@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const artigos = require('../src/data/artigos.json');
 
-const BASE_URL = 'https://www.calculadoramortizacao.com.br';
+const BASE_URL = 'https://calculadoramortizacao.com.br';
 const SITEMAP_PATH = path.join(__dirname, '..', 'public', 'sitemap.xml');
 
 const staticPages = [

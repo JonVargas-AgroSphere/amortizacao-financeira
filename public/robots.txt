@@ -5,4 +5,4 @@ Allow: /
 # Disallow: /admin/
 
 # Link para o Sitemap
-Sitemap: https://www.calculadoramortizacao.com.br/sitemap.xml
+Sitemap: https://calculadoramortizacao.com.br/sitemap.xml
