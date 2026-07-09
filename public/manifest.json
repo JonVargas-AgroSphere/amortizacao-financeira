@@ -1,0 +1,17 @@
+{
+  "name": "Amortização Financeira",
+  "short_name": "Amortização",
+  "description": "Simulador de portabilidade e amortização de financiamento imobiliário. Descubra como pagar seu imóvel mais rápido.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#059669",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Bloquear pastas sensíveis (se houver no futuro)
+# Disallow: /admin/
+
+# Link para o Sitemap
+Sitemap: https://www.calculadoramortizacao.com.br/sitemap.xml

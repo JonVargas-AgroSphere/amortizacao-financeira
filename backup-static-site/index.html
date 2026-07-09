@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Meta Tags Baseadas no Relatório Técnico -->
+    <title>Amortização Financeira | Simulador de Portabilidade e Amortização SAC/Price</title>
+    <meta name="description" content="Descubra como pagar financiamento imobiliário mais rápido. Simule a portabilidade de juros, calcule amortizações extraordinárias e reduza suas parcelas mensalmente de forma simples.">
+    <meta name="keywords" content="amortização de financiamento imobiliário, calculadora de amortização, simulador de financiamento imobiliário, tabela SAC e Price, quitação antecipada financiamento, como pagar financiamento mais rápido, como diminuir juros financiamento imobiliário, reduzir parcela financiamento imobiliário, quitar dívida imobiliária antes do prazo, adiantar parcelas financiamento, vale a pena amortizar financiamento, juros abusivos financiamento, revisão de financiamento imobiliário">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://amortizacaofinanceira.com.br">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logotipo_amortizacao_financeira.png">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://amortizacaofinanceira.com.br/">
+    <meta property="og:title" content="Amortização Financeira | Simulador de Portabilidade e Quitação">
+    <meta property="og:description" content="Descubra como pagar seu financiamento imobiliário em metade do tempo. Simule portabilidade e amortizações de forma gratuita.">
+    <meta property="og:image" content="https://amortizacaofinanceira.com.br/logotipo_amortizacao_financeira.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://amortizacaofinanceira.com.br/">
+    <meta property="twitter:title" content="Amortização Financeira | Simulador de Portabilidade e Quitação">
+    <meta property="twitter:description" content="Descubra como pagar seu financiamento imobiliário em metade do tempo. Simule portabilidade e amortizações de forma gratuita.">
+    <meta property="twitter:image" content="https://amortizacaofinanceira.com.br/logotipo_amortizacao_financeira.png">
+    
+    <!-- Google Analytics (GA4) - Substitua 'G-XXXXXXXXXX' pelo seu ID real -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Google AdSense - Substitua 'ca-pub-XXXXXXXXXXXXXXXX' pelo seu ID de editor -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons para interface profissional -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Chart.js para visualização de dados premium -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- html2pdf.js para geração fidedigna de relatórios em PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f8fafc;
+        }
+        /* Fix overlapping labels and inputs */
+        .group .relative {
+            margin-top: 1.5rem;
+        }
+        /* Custom Tooltip Scroll Prevention & Layout */
+        .tooltip-box {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .group:hover .tooltip-box {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(-4px);
+        }
+        /* Smooth tab transition */
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        /* Hide scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        /* Smooth carousel transition */
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between">
+
+    <!-- Header/Navbar -->
+    <header class="bg-slate-900 text-white shadow-md border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <!-- Logotipo integrado de acordo com o anexo -->
+                <img src="logotipo_amortizacao_financeira.png" alt="Logotipo Amortização Financeira" class="h-12 w-auto object-contain rounded-lg bg-white p-1" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/10b981?text=AF';">
+                <div>
+                    <h1 class="text-lg font-extrabold tracking-tight">Amortização <span class="text-emerald-400">Financeira</span></h1>
+                    <p class="text-xs text-slate-400">Simulação de Portabilidade e Inteligência de Quitação</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 text-xs bg-slate-800 border border-slate-700 px-3 py-1.5 rounded-full">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="text-slate-300 font-medium">Bancos Conveniados Ativos</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- AdSense Top Banner -->
+    <div class="max-w-7xl mx-auto w-full px-4 mt-6">
+        <div class="w-full bg-slate-100 border border-slate-200 rounded-xl h-[180px] flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner">
+            <div class="flex items-center gap-2 mb-1">
+                <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                <span>Espaço de Publicidade Regulamentada (Google AdSense - 728x90)</span>
+            </div>
+            <p class="text-[10px] text-slate-400/70">Anúncios de crédito habitacional autorizados e parceiros de mercado</p>
+        </div>
+    </div>
+
+    <!-- Sistema de Abas Principal -->
+    <div class="max-w-7xl mx-auto w-full px-4 mt-6">
+        <div class="flex border-b border-slate-200 gap-2">
+            <button onclick="switchTab('portabilidade')" id="btn-tab-portabilidade" class="py-3 px-6 font-bold text-sm border-b-2 border-emerald-500 text-emerald-600 flex items-center gap-2 transition focus:outline-none">
+                <i data-lucide="arrow-left-right" class="w-4 h-4"></i>
+                Simulador de Portabilidade
+            </button>
+            <button onclick="switchTab('destruidor')" id="btn-tab-destruidor" class="py-3 px-6 font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition focus:outline-none">
+                <i data-lucide="zap" class="w-4 h-4 text-emerald-500"></i>
+                Planejador de Amortização (Pagar mais rápido)
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow">
+
+        <!-- Espaço para Anúncio AdSense (Top Banner) -->
+        <div class="mb-8 flex justify-center">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <!-- ABA 1: PORTABILIDADE -->
+        <div id="tab-portabilidade" class="tab-content active">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Coluna Esquerda: Formulários da Portabilidade (8 colunas) -->
+                <div class="lg:col-span-8 flex flex-col gap-6">
+                    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200">
+                        <div class="flex items-center gap-2 mb-4">
+                            <i data-lucide="calculator" class="w-5 h-5 text-emerald-600"></i>
+                            <h2 class="text-lg font-bold text-slate-800">Dados do Financiamento Atual</h2>
+                        </div>
+                        <p class="text-sm text-slate-500 mb-6">Insira os dados do seu contrato atual para descobrir como diminuir os juros do seu financiamento imobiliário e avaliar propostas de portabilidade.</p>
+
+                        <!-- Inputs Grupo 1 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <!-- Campo 1: Saldo Devedor -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Saldo Devedor Atual (R$)
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    É o valor total restante da sua dívida imobiliária. Essa informação consta no app do seu banco ou na última planilha de evolução.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-2.5 text-slate-400 font-bold text-sm">R$</span>
+                                    <input id="input-saldo-devedor" type="number" value="300000" class="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                </div>
+                            </div>
+
+                            <!-- Campo 2: Prazo Restante -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Prazo Restante (Meses)
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    A quantidade de parcelas que ainda faltam ser pagas para concluir o financiamento imobiliário.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <input id="input-prazo-restante" type="number" value="240" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                            </div>
+                        </div>
+
+                        <!-- Inputs Grupo 2 -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <!-- Campo 3: Taxa de Juros Atual -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Taxa de Juros Atual (% a.a.)
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Custo Efetivo Total (CET) anual cobrado no seu contrato atual. Geralmente varia entre 9% e 12% ao ano.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <div class="relative">
+                                    <input id="input-taxa-atual" type="number" step="0.01" value="10.5" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                    <span class="absolute right-3 top-2 text-slate-400 text-sm font-semibold">% a.a.</span>
+                                </div>
+                            </div>
+
+                            <!-- Campo 4: Sistema de Amortização -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Sistema de Amortização
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Na SAC, as parcelas são decrescentes. Na Tabela Price, as parcelas mantêm-se constantes do início ao fim se não houver correções adicionais.
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <select id="select-amortizacao" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                    <option value="SAC" selected>SAC (Parcelas Decrescentes)</option>
+                                    <option value="PRICE">PRICE (Parcelas Fixas)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ingressos Regulamentares -->
+                        <h3 class="text-xs font-extrabold text-slate-500 uppercase tracking-widest mb-3 border-t pt-4 border-slate-100">Taxas e Seguros Mensais Obrigatórios</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                            <!-- Campo 5: Taxa Adm Mensal -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Taxa de Administração (R$/mês)
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Tarifa operacional mensal cobrada pela instituição financeira (normalmente entre R$ 20,00 e R$ 30,00).
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-2.5 text-slate-400 font-bold text-sm">R$</span>
+                                    <input id="input-taxa-adm" type="number" value="25" class="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                </div>
+                            </div>
+
+                            <!-- Campo 6: Seguro MIP/DFI -->
+                            <div class="group relative">
+                                <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                    Seguro Mensal MIP/DFI (R$)
+                                    <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                                </label>
+                                <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                    Seguro imobiliário obrigatório que cobre danos físicos ao imóvel (DFI) e morte/invalidez (MIP).
+                                    <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                </div>
+                                <div class="relative">
+                                    <span class="absolute left-3 top-2.5 text-slate-400 font-bold text-sm">R$</span>
+                                    <input id="input-seguro-mip" type="number" value="80" class="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nova Taxa Proposta -->
+                        <div class="bg-emerald-50 border border-emerald-100/80 rounded-xl p-5 mb-4">
+                            <div class="flex items-center gap-2 mb-3">
+                                <i data-lucide="sparkles" class="w-5 h-5 text-emerald-600"></i>
+                                <h4 class="text-sm font-bold text-emerald-900">Taxa de Portabilidade Oferecida no Mercado</h4>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div class="group relative">
+                                    <label class="block text-xs font-bold text-emerald-800 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                        Nova Taxa Simulada (% a.a.)
+                                        <i data-lucide="help-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+                                    </label>
+                                    <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                        Nova taxa proposta por um banco concorrente para realizar a portabilidade do seu saldo devedor.
+                                        <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                                    </div>
+                                    <div class="relative">
+                                        <input id="input-taxa-nova" type="number" step="0.01" value="8.9" class="w-full bg-white border border-emerald-300 rounded-lg px-3 py-2 text-sm font-semibold text-emerald-950 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                        <span class="absolute right-3 top-2 text-emerald-600 text-sm font-semibold">% a.a.</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col justify-end">
+                                    <span class="text-xs text-emerald-800/80 leading-relaxed">Reduzir a taxa de juros nominal em poucos pontos percentuais pode poupar dezenas de milhares de reais devido ao efeito dos juros compostos ao longo dos anos.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ajustes Personalizados do Usuário -->
+                        <div class="mt-6 border-t border-slate-100 pt-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="flex items-center gap-1.5">
+                                    <i data-lucide="plus-circle" class="w-4 h-4 text-emerald-600"></i>
+                                    <h4 class="text-sm font-bold text-slate-800">Inserir Custos Extras da Portabilidade</h4>
+                                </div>
+                                <button type="button" onclick="toggleFormAjuste()" class="text-xs text-emerald-600 hover:text-emerald-700 font-bold flex items-center gap-1 transition">
+                                    <span id="btn-ajuste-texto">Adicionar Ajuste</span>
+                                    <i data-lucide="chevron-down" id="ajuste-chevron" class="w-4 h-4 transition-transform"></i>
+                                </button>
+                            </div>
+
+                            <!-- Mini Form para Novo Ajuste -->
+                            <div id="form-ajuste-container" class="hidden bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 transition-all">
+                                <div class="flex flex-col sm:flex-row gap-3">
+                                    <div class="flex-1">
+                                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Nome do Item / Tarifa</label>
+                                        <input type="text" id="ajuste-nome" placeholder="Ex: Novo Seguro Adicional" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-700">
+                                    </div>
+                                    <div class="w-28">
+                                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Impacto</label>
+                                        <select id="ajuste-tipo" class="w-full bg-white border border-slate-300 rounded-lg px-2 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500 font-bold text-slate-700">
+                                            <option value="-">Desconta (-)</option>
+                                            <option value="+">Acrescenta (+)</option>
+                                        </select>
+                                    </div>
+                                    <div class="w-28">
+                                        <label class="block text-[10px] font-bold text-slate-500 uppercase mb-1">Valor Mensal</label>
+                                        <input type="number" id="ajuste-valor" placeholder="R$ 0,00" class="w-full bg-white border border-slate-300 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500 text-slate-700">
+                                    </div>
+                                    <div class="flex items-end">
+                                        <button type="button" onclick="adicionarAjuste()" class="bg-slate-800 hover:bg-emerald-600 text-white rounded-lg px-4 py-2 text-xs font-bold transition h-fit">
+                                            Aplicar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Lista de Ajustes Cadastrados -->
+                            <div id="lista-ajustes" class="space-y-2 empty:hidden"></div>
+                        </div>
+                    </div>
+
+                    <!-- AdSense Middle Box (In-Feed) -->
+                    <div class="w-full bg-slate-100 border border-slate-200 rounded-2xl h-[180px] flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner mt-6">
+                        <div class="flex items-center gap-2 mb-1">
+                            <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                            <span>Espaço de Publicidade (Google AdSense - Artigo In-Feed)</span>
+                        </div>
+                        <p class="text-[10px] text-slate-400/70">Anúncios relevantes focados em crédito e mercado imobiliário</p>
+                    </div>
+
+                    <!-- SEÇÃO FAQ - PERGUNTAS FREQUENTES (Reposicionada) -->
+                    <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                        <div class="mb-6">
+                            <h3 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Dúvidas Frequentes</h3>
+                            <h2 class="text-lg font-bold text-slate-800">Tudo sobre Amortização</h2>
+                        </div>
+
+                        <div class="grid grid-cols-1 gap-4">
+                            <!-- FAQ Item 1 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(1)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>O que é melhor: prazo ou parcela?</span>
+                                    <i data-lucide="plus" id="faq-icon-1" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-1" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    Reduzir o <strong>prazo</strong> é quase sempre a melhor opção para economizar o máximo de juros possível.
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 2 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(2)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>Custo para portabilidade?</span>
+                                    <i data-lucide="plus" id="faq-icon-2" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-2" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    O banco pode cobrar taxa de avaliação e haverá custos cartorários, mas a economia de juros costuma compensar.
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 3 -->
+                            <div class="border border-slate-100 rounded-xl overflow-hidden">
+                                <button onclick="toggleFaq(3)" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm text-left focus:outline-none">
+                                    <span>Usar FGTS para amortizar?</span>
+                                    <i data-lucide="plus" id="faq-icon-3" class="w-4 h-4 text-emerald-600 transition-transform"></i>
+                                </button>
+                                <div id="faq-content-3" class="hidden p-5 text-xs text-slate-500 leading-relaxed border-t border-slate-100">
+                                    Sim! O FGTS pode ser usado a cada 2 anos para abater o saldo devedor ou as prestações.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                <!-- Coluna Direita Estática da Portabilidade (4 colunas) -->
+                <div id="sidebar-container" class="lg:col-span-4 flex flex-col gap-6">
+                    
+                    <!-- Painel de Resultados Técnicos -->
+                    <div id="results-card" class="bg-slate-900 rounded-2xl p-6 shadow-xl border border-slate-800 text-white relative overflow-hidden transition-all duration-300">
+                        <div class="absolute top-0 right-0 p-4 opacity-5 pointer-events-none">
+                            <i data-lucide="line-chart" class="w-32 h-32"></i>
+                        </div>
+
+                        <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-1">Estudo de Economia Estimado</h3>
+                        <p class="text-[11px] text-slate-400 mb-6">Auditoria comparativa de portabilidade projetada até a quitação.</p>
+
+                        <!-- Disclaimer de Segurança -->
+                        <div class="bg-amber-950/40 border border-amber-900/50 rounded-lg p-3 mb-6">
+                            <p class="text-[10px] text-amber-200 leading-tight">
+                                <strong class="font-bold uppercase">Aviso Legal:</strong> Resultados são estimativas baseadas em simulações matemáticas e não constituem garantia de taxa ou aprovação de crédito pelas instituições financeiras.
+                            </p>
+                        </div>
+
+                        <!-- Preço Calculado de Destaque -->
+                        <div class="mb-2">
+                            <span class="text-xs text-slate-400 block mb-1">Economia Total Projetada:</span>
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="text-2xl font-bold text-slate-300">R$</span>
+                                <span id="res-economia-total" class="text-5xl font-black text-white">0,00</span>
+                            </div>
+                        </div>
+
+                        <!-- Faixa de Amortização -->
+                        <div class="text-[11px] text-slate-400 mb-6 bg-slate-800/60 inline-block px-3 py-1.5 rounded-lg border border-slate-700 w-full">
+                            <div class="flex justify-between items-center">
+                                <span>Redução Mensal Estimada:</span>
+                                <span class="text-emerald-400 font-extrabold" id="res-economia-mensal-faixa">R$ 0,00 a R$ 0,00 /mês</span>
+                            </div>
+                        </div>
+
+                        <!-- Detalhamento das Contas -->
+                        <div class="space-y-3 text-xs font-medium border-t border-slate-800 pt-4">
+                            <div class="flex justify-between text-slate-300">
+                                <span>Sua Parcela Atual Estimada:</span>
+                                <span id="res-parcela-atual" class="text-white font-bold">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300">
+                                <span>Nova Parcela Proposta:</span>
+                                <span id="res-parcela-nova" class="text-emerald-400 font-bold">R$ 0,00</span>
+                            </div>
+                            <div class="flex justify-between text-slate-300 border-b border-slate-800 pb-3">
+                                <span>Economia de Parcela (Média):</span>
+                                <span id="res-economia-mensal" class="text-emerald-400 font-bold">R$ 0,00/mês</span>
+                            </div>
+                            <div class="flex justify-between text-slate-400">
+                                <span>Custos Extras Inclusos:</span>
+                                <span id="res-custos-extras" class="text-slate-300">R$ 0,00/mês</span>
+                            </div>
+                        </div>
+
+                        <!-- Botão Gerador de PDF (Alta Autoridade) -->
+                        <div class="mt-5">
+                            <button type="button" onclick="gerarPDF()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-lg text-xs flex items-center justify-center gap-2 transition shadow-md">
+                                <i data-lucide="file-text" class="w-4 h-4"></i>
+                                Baixar meu Planejamento em PDF
+                            </button>
+                        </div>
+
+                        <!-- Detalhamento de Fórmulas e Metodologia (Dropdown) -->
+                        <div class="mt-6 border-t border-slate-800 pt-4">
+                            <button onclick="toggleFormula()" class="text-xs font-bold text-slate-400 hover:text-white flex items-center justify-between w-full transition-colors focus:outline-none">
+                                <span class="flex items-center gap-1.5"><i data-lucide="calculator" class="w-4 h-4"></i> Entenda a matemática do cálculo</span>
+                                <i data-lucide="chevron-down" id="formula-chevron" class="w-4 h-4 transition-transform"></i>
+                            </button>
+                            <div id="formula-content" class="hidden mt-3 text-[10px] text-slate-400 space-y-2 bg-slate-800/40 p-3 rounded-lg border border-slate-800 leading-relaxed">
+                                <p><strong>1. Metodologia SAC:</strong> A amortização mensal é fixa ($A = \text{Saldo Devedor} / \text{Prazo}$). Os juros decrescem proporcionalmente ao saldo devedor mensal amortizado ($J_t = \text{Saldo Devedor}_{t-1} \times \text{Taxa Mensal}$).</p>
+                                <p><strong>2. Metodologia Price:</strong> Aplica a fórmula clássica de amortização francesa para parcelas iguais: $P = \text{Saldo Devedor} \times \frac{i(1+i)^n}{(1+i)^n - 1}$.</p>
+                                <p><strong>3. SAM (Misto):</strong> Média aritmética das parcelas calculadas pelo método SAC e Price para o respectivo período.</p>
+                                <p><strong>4. Cenário Acelerado:</strong> Deduz mensalmente o valor do aporte extraordinário diretamente do Saldo Devedor recalculado, amortizando o prazo remanescente de forma linear.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulário de Captação / Funil de Transação de Leads -->
+                    <div id="lead-form-container" class="bg-gradient-to-br from-emerald-600 to-teal-800 rounded-3xl p-1 shadow-lg transition-all duration-300">
+                        <div class="bg-white rounded-[22px] p-5 h-full">
+                            <span class="bg-emerald-100 text-emerald-800 text-[10px] font-black px-2.5 py-1 rounded-full uppercase tracking-wider inline-block mb-3">
+                                Correspondência Bancária Homologada
+                            </span>
+                            <h3 class="text-lg font-extrabold text-slate-900 leading-tight mb-2">Descubra Como Reduzir os Juros do Seu Imóvel</h3>
+                            <p class="text-xs text-slate-600 mb-4">Conectamos você a parceiros homologados capazes de reduzir suas parcelas e juros imobiliários de forma 100% gratuita.</p>
+                            
+                            <form id="lead-form" class="space-y-3">
+                                <div>
+                                    <input type="text" id="lead-nome" placeholder="Seu Nome Completo" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-700">
+                                </div>
+                                <div>
+                                    <input type="tel" id="lead-whatsapp" placeholder="WhatsApp (DDD + Número)" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-700">
+                                </div>
+                                <div>
+                                    <select id="lead-banco" required class="w-full bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-xs focus:ring-1 focus:ring-emerald-500 focus:outline-none font-medium text-slate-600">
+                                        <option value="">Qual o seu banco financiador atual?</option>
+                                        <option value="caixa">Caixa Econômica Federal</option>
+                                        <option value="itau">Itaú Unibanco</option>
+                                        <option value="bradesco">Bradesco</option>
+                                        <option value="santander">Santander</option>
+                                        <option value="banco-brasil">Banco do Brasil</option>
+                                        <option value="outros">Outras Instituições</option>
+                                    </select>
+                                </div>
+
+                                <!-- Checkbox Termos LGPD (Rigoroso) -->
+                                <div class="flex items-start gap-2 pt-1 pb-1">
+                                    <input type="checkbox" id="lead-lgpd" required class="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500">
+                                    <label for="lead-lgpd" class="text-[10px] text-slate-500 leading-tight cursor-pointer">
+                                        Autorizo o processamento seguro dos meus dados e declaro aceitar os Termos de Uso e Política de Privacidade da plataforma sob os termos regulamentados da LGPD.
+                                    </label>
+                                </div>
+
+                                <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-extrabold py-3 rounded-lg text-xs tracking-wider uppercase transition flex items-center justify-center gap-2 mt-2 shadow-sm">
+                                    <i data-lucide="send" class="w-4 h-4 text-emerald-400"></i>
+                                    Solicitar Análise de Especialista
+                                </button>
+                            </form>
+                            <p class="text-[10px] text-center text-slate-400 mt-3">*Seus dados cadastrais e técnicos de simulação estão protegidos sob conformidade com a LGPD e serão compartilhados estritamente com assessores de crédito para fins de análise formal.</p>
+                        </div>
+                    </div>
+
+                    <!-- AdSense Sidebar Column Box -->
+                    <div id="ad-sidebar" class="hidden">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ABA 2: DESTRUIDOR DE DÍVIDA -->
+        <div id="tab-destruidor" class="tab-content">
+            <div class="flex flex-col gap-8 w-full">
+                
+                <!-- Card de Entrada de Dados e Tabelas que ocupam a largura total -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200 flex flex-col gap-6">
+                    <div class="mb-4">
+                        <h2 class="text-2xl font-extrabold text-slate-900 flex items-center gap-2">
+                            <i data-lucide="zap" class="text-emerald-500 w-6 h-6"></i>
+                            Como Pagar Financiamento Mais Rápido
+                        </h2>
+                        <p class="text-sm text-slate-500 mt-1">Descubra como amortizar financiamento para quitar juros imobiliários mais cedo por meio de aportes estratégicos adicionais.</p>
+                    </div>
+
+                    <!-- Seção de Inputs -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-2 border-t border-slate-100 pt-4">
+                        <!-- Campo 1: Saldo Devedor -->
+                        <div class="group relative">
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                Saldo Devedor Inicial (R$)
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                            </label>
+                            <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                O montante total que você deve ao banco hoje. Utilizado como base de partida para todas as tabelas comparativas.
+                                <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2.5 text-slate-400 font-bold text-sm">R$</span>
+                                <input id="dest-saldo" type="number" value="300000" class="w-full bg-slate-50 border border-slate-300 rounded-lg pl-10 pr-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                            </div>
+                        </div>
+
+                        <!-- Campo 2: Taxa de Juros Anual -->
+                        <div class="group relative">
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                Taxa de Juros Anual (%)
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                            </label>
+                            <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                Taxa de juros anual nominal contratada (CET) do seu financiamento.
+                                <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                            </div>
+                            <div class="relative">
+                                <input id="dest-taxa" type="number" step="0.01" value="10.5" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                <span class="absolute right-3 top-2 text-slate-400 text-sm font-semibold">% a.a.</span>
+                            </div>
+                        </div>
+
+                        <!-- Campo 3: Prazo Contratual -->
+                        <div class="group relative">
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                Prazo do Financiamento (Meses)
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                            </label>
+                            <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                Prazo contratual restante em meses para as simulações base de SAC e Price.
+                                <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                            </div>
+                            <input id="dest-prazo" type="number" value="240" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                        </div>
+
+                        <!-- Campo 4: Aporte Extra Mensal -->
+                        <div class="group relative">
+                            <label class="block text-xs font-bold text-emerald-700 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                Aporte Mensal Adicional (R$)
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-emerald-600"></i>
+                            </label>
+                            <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                O valor extra que você planeja pagar mensalmente além da parcela padrão para abater diretamente do saldo devedor principal.
+                                <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                            </div>
+                            <div class="relative">
+                                <span class="absolute left-3 top-2.5 text-emerald-600 font-bold text-sm">R$</span>
+                                <input id="dest-aporte" type="number" value="500" class="w-full bg-emerald-50 border border-emerald-300 rounded-lg pl-10 pr-3 py-2 text-sm font-semibold text-emerald-950 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                            </div>
+                        </div>
+
+                        <!-- Campo 5: Método de Amortização de Escolha -->
+                        <div class="group relative md:col-span-2">
+                            <label class="block text-xs font-bold text-slate-600 uppercase mb-1 flex items-center gap-1 cursor-help">
+                                Sistema de Amortização Base do Cenário de Amortizações
+                                <i data-lucide="help-circle" class="w-3.5 h-3.5 text-slate-400"></i>
+                            </label>
+                            <div class="tooltip-box pointer-events-none absolute bottom-full left-0 mb-2 w-72 bg-slate-800 text-white text-xs p-3 rounded-lg shadow-xl z-30 leading-relaxed">
+                                Escolha qual método será usado no Cenário com Amortizações para calcular a parcela regular antes de injetar os aportes adicionais.
+                                <div class="absolute w-2.5 h-2.5 bg-slate-800 transform rotate-45 -bottom-1 left-4"></div>
+                            </div>
+                            <select id="dest-sistema" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-sm font-semibold text-slate-700 focus:ring-2 focus:ring-emerald-500 focus:outline-none transition">
+                                <option value="SAC" selected>SAC (Amortização Constante + Aporte Extra)</option>
+                                <option value="PRICE">PRICE (Tabela Price + Aporte Extra)</option>
+                                <option value="SAM">SAM Misto (Média de Amortização + Aporte Extra)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Painel de Resumos em Formato de Cards e Gráfico de Rosca com AdSense Lateral -->
+                    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 border-t pt-6 border-slate-100 items-stretch">
+                        <!-- Coluna Esquerda: Cards Empilhados e Comprimidos (5 colunas) -->
+                        <div class="lg:col-span-5 flex flex-col gap-3">
+                            <!-- Card 1: Cenário com Amortizações (Melhor Resultado) -->
+                            <div class="bg-emerald-50 border border-emerald-300 rounded-xl p-3.5 shadow-sm">
+                                <h4 class="text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider mb-2 flex items-center gap-1">
+                                    <i data-lucide="zap" class="w-3.5 h-3.5 text-emerald-500 animate-pulse"></i>
+                                    Cenário com Amortizações (Com Aporte)
+                                </h4>
+                                <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-slate-700">
+                                    <div class="flex flex-col p-2 bg-white/60 rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Tempo Total</span>
+                                        <span id="card-dest-tempo" class="font-bold text-emerald-950 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-white/60 rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Total a Pagar</span>
+                                        <span id="card-dest-total" class="font-bold text-emerald-950 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-emerald-100/50 rounded-lg">
+                                        <span class="text-emerald-800 text-[9px] uppercase font-bold">Economia</span>
+                                        <span id="card-dest-economia" class="font-black text-emerald-600 text-xs mt-0.5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 2: SAC Padrão -->
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 shadow-sm">
+                                <h4 class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    SAC Padrão (Sem Aporte)
+                                </h4>
+                                <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-slate-600">
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Tempo Total</span>
+                                        <span id="card-sac-tempo" class="font-bold text-slate-800 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Total a Pagar</span>
+                                        <span id="card-sac-total" class="font-bold text-slate-800 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Total Juros</span>
+                                        <span id="card-sac-juros" class="font-semibold text-red-500 text-xs mt-0.5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Card 3: Price Padrão -->
+                            <div class="bg-slate-50 border border-slate-200 rounded-xl p-3.5 shadow-sm">
+                                <h4 class="text-[11px] font-extrabold text-slate-500 uppercase tracking-wider mb-2 flex items-center gap-1">
+                                    <i data-lucide="calendar" class="w-3.5 h-3.5 text-slate-400"></i>
+                                    PRICE Padrão (Sem Aporte)
+                                </h4>
+                                <div class="grid grid-cols-3 gap-2 text-center text-[11px] text-slate-600">
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Tempo Total</span>
+                                        <span id="card-price-tempo" class="font-bold text-slate-800 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Total a Pagar</span>
+                                        <span id="card-price-total" class="font-bold text-slate-800 text-xs mt-0.5">-</span>
+                                    </div>
+                                    <div class="flex flex-col p-2 bg-white rounded-lg">
+                                        <span class="text-slate-400 text-[9px] uppercase font-semibold">Total Juros</span>
+                                        <span id="card-price-juros" class="font-semibold text-red-500 text-xs mt-0.5">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Coluna Central: Gráfico de Rosca Centrado (4 colunas) -->
+                        <div class="lg:col-span-4 bg-slate-50 rounded-xl p-4 border border-slate-200 shadow-inner flex flex-col justify-between">
+                            <div>
+                                <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-4 flex items-center gap-1.5 justify-center">
+                                    <i data-lucide="pie-chart" class="w-4 h-4 text-emerald-500"></i>
+                                    Composição da Dívida (Cenário Amortizado)
+                                </h4>
+                                <div class="relative w-full h-48 flex justify-center items-center">
+                                    <canvas id="chart-amortizacao-rosca"></canvas>
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-slate-400 text-center leading-tight mt-3">Os juros diminuem agressivamente à medida que aportes extraordinários são consolidados na planilha.</p>
+                        </div>
+
+                        <!-- Coluna Direita: Adsense Lateral (3 colunas) -->
+                        <div class="lg:col-span-3 flex">
+                            <div class="w-full bg-slate-100 border border-slate-200 rounded-xl flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner p-4 text-center min-h-[180px]">
+                                <div class="flex items-center gap-2 mb-1 justify-center">
+                                    <i data-lucide="layout" class="w-4 h-4 opacity-50"></i>
+                                    <span>Espaço de Publicidade (AdSense - 300x250)</span>
+                                </div>
+                                <p class="text-[10px] text-slate-400/70">Anúncios relevantes sobre crédito habitacional e quitação</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEÇÃO DE GRÁFICOS PREMIUM (Curva de Linhas) -->
+                    <div class="grid grid-cols-1 gap-6 border-t pt-6 border-slate-100">
+                        <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 shadow-inner">
+                            <h4 class="text-xs font-bold text-slate-600 uppercase tracking-wider mb-4 flex items-center gap-1.5">
+                                <i data-lucide="line-chart" class="w-4 h-4 text-emerald-500"></i>
+                                Curva de Quitação do Saldo Devedor ao Longo do Tempo
+                            </h4>
+                            <div class="relative w-full h-72 md:h-80">
+                                <canvas id="chart-amortizacao-linha"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Acordeão / Dropdown das Tabelas de Amortização Mês a Mês -->
+                    <div class="border-t border-slate-100 pt-6">
+                        <div class="border border-slate-200 rounded-xl overflow-hidden bg-white shadow-sm">
+                            <button type="button" onclick="toggleTablesAccordion()" class="w-full px-5 py-4 flex justify-between items-center bg-slate-50 hover:bg-slate-100 transition font-bold text-slate-700 text-sm focus:outline-none">
+                                <span class="flex items-center gap-2">
+                                    <i data-lucide="table-properties" class="w-4.5 h-4.5 text-emerald-600"></i>
+                                    Ver Detalhamento de Amortização Mês a Mês (Tabelas Comparativas)
+                                </span>
+                                <i data-lucide="chevron-down" id="tables-accordion-chevron" class="w-5 h-5 transition-transform duration-200"></i>
+                            </button>
+                            
+                            <div id="tables-accordion-content" class="hidden p-5 border-t border-slate-200">
+                                <!-- Grid de 3 Tabelas Comparativas ocupando toda a largura útil -->
+                                <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+                                    
+                                    <!-- Tabela 1: SAC Padrão -->
+                                    <div class="flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                                        <div class="bg-slate-800 text-white text-xs font-bold px-4 py-3 border-b border-slate-700 flex justify-between items-center">
+                                            <span>Tabela 1: SAC Padrão</span>
+                                            <span class="text-[10px] text-slate-400 font-normal bg-slate-900/40 px-2 py-0.5 rounded">Sem Aporte</span>
+                                        </div>
+                                        <div class="overflow-x-auto max-h-96 no-scrollbar">
+                                            <table class="w-full text-left border-collapse text-xs min-w-[300px]">
+                                                <thead class="bg-slate-50 text-slate-600 sticky top-0 z-10 shadow-sm">
+                                                    <tr>
+                                                        <th class="p-3 border-b border-slate-200">Mês</th>
+                                                        <th class="p-3 border-b border-slate-200">Sld. Inicial</th>
+                                                        <th class="p-3 border-b border-slate-200">Parcela / Detalhe</th>
+                                                        <th class="p-3 border-b border-slate-200">Sld. Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="sac-table-body" class="divide-y divide-slate-100 bg-white">
+                                                    <!-- Injetado via JS -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tabela 2: Price Padrão -->
+                                    <div class="flex flex-col bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                                        <div class="bg-slate-800 text-white text-xs font-bold px-4 py-3 border-b border-slate-700 flex justify-between items-center">
+                                            <span>Tabela 2: PRICE Padrão</span>
+                                            <span class="text-[10px] text-slate-400 font-normal bg-slate-900/40 px-2 py-0.5 rounded">Sem Aporte</span>
+                                        </div>
+                                        <div class="overflow-x-auto max-h-96 no-scrollbar">
+                                            <table class="w-full text-left border-collapse text-xs min-w-[300px]">
+                                                <thead class="bg-slate-50 text-slate-600 sticky top-0 z-10 shadow-sm">
+                                                    <tr>
+                                                        <th class="p-3 border-b border-slate-200">Mês</th>
+                                                        <th class="p-3 border-b border-slate-200">Sld. Inicial</th>
+                                                        <th class="p-3 border-b border-slate-200">Parcela / Detalhe</th>
+                                                        <th class="p-3 border-b border-slate-200">Sld. Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="price-table-body" class="divide-y divide-slate-100 bg-white">
+                                                    <!-- Injetado via JS -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Tabela 3: Cenário com Amortizações -->
+                                    <div class="flex flex-col bg-white border border-emerald-200 rounded-xl overflow-hidden shadow-md">
+                                        <div class="bg-gradient-to-r from-emerald-600 to-teal-600 text-white text-xs font-bold px-4 py-3 border-b border-emerald-700 flex justify-between items-center">
+                                            <span class="flex items-center gap-1.5"><i data-lucide="zap" class="w-3.5 h-3.5 text-emerald-300"></i> Tabela 3: Cenário com Amortizações</span>
+                                            <span class="text-[10px] text-emerald-100 font-semibold bg-emerald-700/40 px-2 py-0.5 rounded">Com Aporte</span>
+                                        </div>
+                                        <div class="overflow-x-auto max-h-96 no-scrollbar">
+                                            <table class="w-full text-left border-collapse text-xs min-w-[320px]">
+                                                <thead class="bg-emerald-50/50 text-slate-700 sticky top-0 z-10 shadow-sm">
+                                                    <tr>
+                                                        <th class="p-3 border-b border-slate-200">Mês</th>
+                                                        <th class="p-3 border-b border-slate-200">Sld. Inicial</th>
+                                                        <th class="p-3 border-b border-slate-200">Pgt. + Aporte</th>
+                                                        <th class="p-3 border-b border-slate-200 font-bold text-emerald-900">Sld. Final</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="dest-table-body" class="divide-y divide-slate-100 bg-white">
+                                                    <!-- Injetado via JS -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Área de Resultados e Leads do Destruidor (Alocados Abaixo) -->
+                <div id="bottom-container" class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6">
+                    <!-- Elementos de resultados e captação serão movidos para aqui dinamicamente via JS na aba de amortização -->
+                </div>
+
+                <!-- AdSense adicional posicionado abaixo do painel de resultados e do formulário -->
+                <div class="w-full mb-8 flex justify-center">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                         data-ad-slot="XXXXXXXXXX"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- SEÇÃO DE CONTEÚDO SEO - LISTA VERTICAL DE ARTIGOS -->
+        <div class="mt-12 grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            <!-- Coluna de Artigos (Alinhada com a calculadora principal) -->
+            <div class="lg:col-span-8 flex flex-col gap-6">
+                <div class="mb-4 px-2">
+                    <h3 class="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">Inteligência Financeira</h3>
+                    <h2 class="text-2xl font-black text-slate-900 tracking-tight">Guia de Planejamento de Ativos</h2>
+                    <p class="text-sm text-slate-500 mt-2 text-balance">Explore nossos manuais técnicos e estratégias definitivas para reduzir juros e quitar seu imóvel antes do prazo.</p>
+                </div>
+
+                <!-- Card 1 -->
+                <a href="manual-pratico-portabilidade.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo_1_Manual Aba1.png" alt="Aba 1" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Portabilidade de Crédito</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Descubra como migrar sua dívida para reduzir juros drasticamente hoje mesmo. Aprenda a preencher os dados e veja a economia real na troca de banco.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 2 -->
+                <a href="manual-pratico-amortizacao.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo_2_Manual Aba2.png" alt="Aba 2" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-blue-100 text-blue-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Manual</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Plano de Amortização</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Aprenda a destruir o saldo devedor e quitar seu imóvel anos antes do prazo. Configure aportes mensais e anuais de forma estratégica.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 3 -->
+                <a href="guia-pagar-financiamento-mais-rapido.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo_3_Como Pagar Financiamento Mais Rápido.png" alt="Guia 3" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Quitação Acelerada</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Estratégias definitivas para reduzir o tempo da sua dívida pela metade, aproveitando FGTS, 13º e bônus de forma cirúrgica.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 4 -->
+                <a href="amortizacao-prazo-vs-parcela.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Atigo 4 - prazo_vs_parcela.png" alt="Guia 4" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Prazo ou Parcela?</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Entenda a diferença matemática implacável entre os dois modelos e descubra qual opção gera a maior economia real para o seu bolso.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 5 -->
+                <a href="tabela-sac-vs-price-comparativo.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 5 - sac_vs_price.png" alt="Guia 5" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Tabela SAC vs Price</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">O comparativo definitivo entre os principais sistemas de amortização do mercado brasileiro e como eles impactam o custo total da dívida.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 6 -->
+                <a href="como-diminuir-juros-financiamento.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 6 - estrategias_reducao_juros.png" alt="Guia 6" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Reduzir Juros</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Conheça os mecanismos legais de renegociação interna e o poder da portabilidade para transferir sua dívida para taxas menores.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 7 -->
+                <a href="vale-a-pena-amortizar-ou-investir.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 7 - amortizar_vs_investir.png" alt="Guia 7" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-amber-100 text-amber-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Amortizar ou Investir?</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Colocamos os números na balança. Veja por que a amortização é considerada um investimento sem risco com retorno garantido.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 8 -->
+                <a href="artigo-8-uso-fgts.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 8 - uso_fgts_ilustracao.png" alt="Guia 8" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Estratégia</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Uso do FGTS</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Muitos brasileiros têm um valor considerável parado na conta do FGTS rendendo pouco. Usá-lo para amortizar é uma estratégia inteligente.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 9 -->
+                <a href="artigo-9-juros-abusivos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 9 - juros_abusivos_ilustracao.png" alt="Guia 9" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-red-100 text-red-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Alerta</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Abusivos</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Sentir que seu financiamento está com parcelas acima do mercado é um sinal de alerta. Entenda o que pode ser contestado.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+
+                <!-- Card 10 -->
+                <a href="artigo-10-juros-compostos.html" class="flex flex-col sm:flex-row bg-white border border-slate-200 rounded-3xl overflow-hidden hover:border-emerald-500 hover:shadow-xl transition-all group min-h-[160px]">
+                    <div class="sm:w-[30%] bg-slate-50 border-r border-slate-100 flex items-center justify-center p-4">
+                        <img src="Artigo 10 - juros_compostos_mestre.png" alt="Guia 10" class="max-w-full max-h-full object-contain group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="sm:w-[70%] p-6 flex flex-col justify-center min-w-0">
+                        <span class="text-[10px] bg-emerald-100 text-emerald-900 font-black px-3 py-0.5 rounded-full uppercase self-start mb-2 tracking-widest">Educação</span>
+                        <h4 class="text-lg lg:text-xl font-black text-slate-900 leading-tight mb-2 uppercase">Juros Compostos</h4>
+                        <p class="text-sm text-slate-500 line-clamp-2 leading-relaxed">Albert Einstein teria chamado os juros compostos de a oitava maravilha do mundo. No financiamento, eles trabalham contra você.</p>
+                        <span class="text-xs font-black text-emerald-600 mt-3 flex items-center gap-1 group-hover:gap-2 transition-all">Acessar Guia Completo <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Coluna Lateral: AdSense Vertical Estendido -->
+            <div class="lg:col-span-4 flex flex-col">
+                <div class="sticky top-8 w-full bg-slate-100 border border-slate-200 rounded-3xl h-full min-h-[1200px] flex flex-col items-center justify-center text-slate-400 text-xs font-semibold shadow-inner p-6 text-center">
+                    <div class="flex flex-col items-center gap-4">
+                        <i data-lucide="layout" class="w-8 h-8 opacity-30"></i>
+                        <span class="uppercase tracking-widest">Publicidade Premium</span>
+                        <div class="w-full h-[1000px] flex items-center justify-center">
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                                 data-ad-slot="XXXXXXXXXX"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                 (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-slate-400/70 mt-4">Anúncios baseados em seu perfil de crédito imobiliário</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense de Base -->
+        <div class="mt-12 flex justify-center w-full">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <!-- AdSense Base -->
+        <div class="mt-8 flex justify-center w-full">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+    </main>
+
+    <!-- Footer com Isenção de Responsabilidade (Disclaimer Completo) -->
+    <footer class="bg-slate-900 text-slate-400 py-12 mt-12 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h4 class="text-white font-extrabold text-xs mb-3 uppercase tracking-wider">Aviso Legal e Diretrizes de Portabilidade e Quitação de Dívidas</h4>
+            <p class="text-[11px] leading-relaxed mb-4 text-justify sm:text-center text-slate-500">
+                Esta plataforma é uma ferramenta de simulação matemática desenvolvida para estimar variações de custos com base nas metodologias financeiras comuns aplicadas a contratos imobiliários sob regras vigentes de mercado. O <strong>Resultado de Economia Projetada</strong> e os quadros comparativos gerados por esta calculadora não constituem de forma alguma uma garantia contratual de aprovação de crédito, oferta vinculante de faturamento ou promessa de execução de taxa por qualquer instituição financeira.
+            </p>
+            <p class="text-[11px] leading-relaxed mb-6 text-justify sm:text-center text-slate-500">
+                A aprovação de portabilidade de financiamento está sujeita a vistorias e análises cadastrais individuais conduzidas pelas instituições receptoras da dívida, além de custos cartorários de lavratura de nova escritura imobiliária sob a Lei da Portabilidade (Resolução CMN nº 4.292/2013). Atuamos exclusivamente como um hub digital de originação, conexão e curadoria de dados de intenção para correspondentes bancários credenciados. Não realizamos empréstimos diretos e não transacionamos valores financeiros de nenhuma natureza em nossos servidores.
+            </p>
+            <div class="border-t border-slate-800 pt-6">
+                <div class="flex flex-wrap justify-center gap-4 mb-4 text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                    <a href="privacidade.html" class="hover:text-emerald-400 transition">Política de Privacidade</a>
+                    <a href="termos.html" class="hover:text-emerald-400 transition">Termos de Uso</a>
+                </div>
+                <p class="text-[10px] font-bold text-slate-600 uppercase tracking-widest">&copy; 2026 Amortização Financeira. Todos os direitos reservados. Inteligência de Planejamento de Ativos de Massa.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Banner de Cookies LGPD (Rigoroso e Persistente) -->
+    <div id="lgpd-cookie-banner" class="fixed bottom-0 left-0 right-0 bg-slate-900 border-t border-slate-800 text-slate-300 py-4 px-6 z-50 transform translate-y-full transition-transform duration-300 hidden shadow-2xl">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-emerald-500/10 p-2 rounded-full hidden md:block">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-emerald-400"></i>
+                </div>
+                <p class="text-xs text-slate-400 leading-relaxed max-w-4xl text-left">
+                    Valorizamos sua privacidade. Utilizamos cookies funcionais e de desempenho para melhorar sua experiencencia de navegação e gerar cálculos técnicos avançados. Ao prosseguir utilizando nossos simuladores, você declara aceitar o uso de cookies em conformidade com a nossa <a href="privacidade.html" class="text-emerald-400 hover:underline">Política de Privacidade</a> de dados sob os preceitos legais da LGPD.
+                </p>
+            </div>
+            <div class="flex gap-2 shrink-0">
+                <button onclick="aceitarCookies()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs py-2 px-6 rounded-lg transition">
+                    Aceitar Todos
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Sucesso Nível Premium -->
+    <div id="success-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center hidden px-4">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 text-center shadow-2xl border border-emerald-500/20 relative">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div class="bg-emerald-50 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-100">
+                <i data-lucide="party-popper" class="w-8 h-8 text-emerald-600"></i>
+            </div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Simulação Processada!</h3>
+            <p class="text-xs text-slate-600 mb-6">Nossa assessoria homologada de correspondentes foi acionada. Eles analisarão o cenário que você calculou e entrarão em contato via WhatsApp de forma 100% gratuita.</p>
+            <button onclick="closeModal()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 rounded-lg text-sm tracking-wider uppercase transition">
+                Voltar ao Painel
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal de Leitura de Artigo SEO -->
+    <div id="article-modal" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 flex items-center justify-center hidden px-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-6 text-left shadow-2xl border border-slate-200 relative">
+            <button onclick="closeArticleModal()" class="absolute top-4 right-4 p-1.5 bg-slate-100 rounded-full text-slate-400 hover:text-slate-600 transition">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="article-modal-content" class="prose prose-slate max-w-none">
+                <!-- Injetado dinamicamente via JS -->
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-100 flex justify-end">
+                <button onclick="closeArticleModal()" class="bg-slate-900 hover:bg-slate-800 text-white font-bold px-5 py-2 rounded-lg text-xs transition">
+                    Fechar Artigo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar os ícones do Lucide
+        lucide.createIcons();
+
+        // Elementos DOM de Entrada da Portabilidade
+        const inputSaldoDevedor = document.getElementById('input-saldo-devedor');
+        const inputPrazoRestante = document.getElementById('input-prazo-restante');
+        const inputTaxaAtual = document.getElementById('input-taxa-atual');
+        const selectAmortizacao = document.getElementById('select-amortizacao');
+        const inputTaxaAdm = document.getElementById('input-taxa-adm');
+        const inputSeguroMip = document.getElementById('input-seguro-mip');
+        const inputTaxaNova = document.getElementById('input-taxa-nova');
+
+        // Elementos DOM de Entrada do Destruidor de Dívida
+        const destSaldo = document.getElementById('dest-saldo');
+        const destTaxa = document.getElementById('dest-taxa');
+        const destPrazo = document.getElementById('dest-prazo');
+        const destAporte = document.getElementById('dest-aporte');
+        const destSistema = document.getElementById('dest-sistema');
+
+        // Elementos DOM de Ajustes Personalizados
+        const formAjusteContainer = document.getElementById('form-ajuste-container');
+        const btnAjusteTexto = document.getElementById('btn-ajuste-texto');
+        const ajusteChevron = document.getElementById('ajuste-chevron');
+        const listaAjustes = document.getElementById('lista-ajustes');
+
+        // Elementos DOM de Saída da Portabilidade
+        const resEconomiaTotal = document.getElementById('res-economia-total');
+        const resEconomiaMensalFaixa = document.getElementById('res-economia-mensal-faixa');
+        const resParcelaAtual = document.getElementById('res-parcela-atual');
+        const resParcelaNova = document.getElementById('res-parcela-nova');
+        const resEconomiaMensal = document.getElementById('res-economia-mensal');
+        const resCustosExtras = document.getElementById('res-custos-extras');
+
+        // Elementos DOM de Saída do Destruidor de Dívida
+        const cardSacTempo = document.getElementById('card-sac-tempo');
+        const cardSacTotal = document.getElementById('card-sac-total');
+        const cardSacJuros = document.getElementById('card-sac-juros');
+        const cardPriceTempo = document.getElementById('card-price-tempo');
+        const cardPriceTotal = document.getElementById('card-price-total');
+        const cardPriceJuros = document.getElementById('card-price-juros');
+        const cardDestTempo = document.getElementById('card-dest-tempo');
+        const cardDestTotal = document.getElementById('card-dest-total');
+        const cardDestEconomia = document.getElementById('card-dest-economia');
+        const sacTableBody = document.getElementById('sac-table-body');
+        const priceTableBody = document.getElementById('price-table-body');
+        const destTableBody = document.getElementById('dest-table-body');
+
+        // Estado das Variáveis e Gráficos
+        let devedorAjustes = [];
+        let activeTab = 'portabilidade';
+        let lineChartInstance = null;
+        let pieChartInstance = null;
+
+        // Alternar Visualização das Abas
+        function switchTab(tabId) {
+            activeTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            // Ajustar o visual dos botões de aba
+            const btnPort = document.getElementById('btn-tab-portabilidade');
+            const btnDest = document.getElementById('btn-tab-destruidor');
+            
+            const resultsCard = document.getElementById('results-card');
+            const leadFormContainer = document.getElementById('lead-form-container');
+            const adSidebar = document.getElementById('ad-sidebar');
+
+            if (tabId === 'portabilidade') {
+                btnPort.className = "py-3 px-6 font-bold text-sm border-b-2 border-emerald-500 text-emerald-600 flex items-center gap-2 transition focus:outline-none";
+                btnDest.className = "py-3 px-6 font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition focus:outline-none";
+                
+                // Mover os cartões de resultados e leads para a barra lateral direita
+                const sidebar = document.getElementById('sidebar-container');
+                if (sidebar && resultsCard && leadFormContainer && adSidebar) {
+                    adSidebar.classList.remove('hidden');
+                    sidebar.appendChild(resultsCard);
+                    sidebar.appendChild(leadFormContainer);
+                    sidebar.appendChild(adSidebar);
+                }
+            } else {
+                btnPort.className = "py-3 px-6 font-bold text-sm border-b-2 border-transparent text-slate-500 hover:text-slate-800 flex items-center gap-2 transition focus:outline-none";
+                btnDest.className = "py-3 px-6 font-bold text-sm border-b-2 border-emerald-500 text-emerald-600 flex items-center gap-2 transition focus:outline-none";
+                
+                // Mover os cartões de resultados e leads para a base inferior
+                const bottom = document.getElementById('bottom-container');
+                if (bottom && resultsCard && leadFormContainer && adSidebar) {
+                    adSidebar.classList.add('hidden'); // Ocultar o anúncio vertical para um grid perfeito de 2 colunas abaixo das tabelas
+                    bottom.appendChild(resultsCard);
+                    bottom.appendChild(leadFormContainer);
+                }
+            }
+            calcularPortabilidade();
+            calcularDestruidor();
+        }
+
+        // Alternar visualização do formulário de novos ajustes
+        function toggleFormAjuste() {
+            if (formAjusteContainer.classList.contains('hidden')) {
+                formAjusteContainer.classList.remove('hidden');
+                btnAjusteTexto.textContent = "Ocultar Ajuste";
+                ajusteChevron.classList.add('rotate-180');
+            } else {
+                formAjusteContainer.classList.add('hidden');
+                btnAjusteTexto.textContent = "Adicionar Ajuste";
+                ajusteChevron.classList.remove('rotate-180');
+            }
+        }
+
+        // Alternar visualização do acordeão de tabelas
+        function toggleTablesAccordion() {
+            const content = document.getElementById('tables-accordion-content');
+            const chevron = document.getElementById('tables-accordion-chevron');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        // Adicionar novo ajuste cadastrado ao estado da calculadora
+        function adicionarAjuste() {
+            const nomeInput = document.getElementById('ajuste-nome');
+            const valorInput = document.getElementById('ajuste-valor');
+            const tipo = document.getElementById('ajuste-tipo').value;
+
+            const nome = nomeInput.value.trim();
+            const valor = parseFloat(valorInput.value);
+
+            if (nome && !isNaN(valor) && valor > 0) {
+                devedorAjustes.push({ nome, tipo, valor });
+                nomeInput.value = '';
+                valorInput.value = '';
+                renderAjustes();
+            }
+        }
+
+        // Remover ajuste cadastrado
+        function removerAjuste(index) {
+            devedorAjustes.splice(index, 1);
+            renderAjustes();
+        }
+
+        // Renderizar lista de ajustes adicionais
+        function renderAjustes() {
+            listaAjustes.innerHTML = '';
+            
+            devedorAjustes.forEach((a, index) => {
+                const div = document.createElement('div');
+                div.className = "flex justify-between items-center text-xs p-2 bg-white border border-slate-200 rounded-lg text-slate-600 shadow-sm";
+                const colorClass = a.tipo === '+' ? 'text-red-500' : 'text-emerald-500';
+                
+                div.innerHTML = `
+                    <span class="font-medium truncate flex-1 pr-2">${a.nome}</span>
+                    <span class="font-bold ${colorClass} mr-3 whitespace-nowrap">${a.tipo} R$ ${a.valor.toFixed(2).replace('.', ',')}</span>
+                    <button type="button" onclick="removerAjuste(${index})" class="text-slate-400 hover:text-red-500 transition-colors p-1" title="Remover este item">
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                    </button>
+                `;
+                listaAjustes.appendChild(div);
+            });
+            lucide.createIcons();
+            calcularPortabilidade();
+        }
+
+        // Alternar visualização da caixa de explicações metodológicas
+        function toggleFormula() {
+            const content = document.getElementById('formula-content');
+            const chevron = document.getElementById('formula-chevron');
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                content.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
+        }
+
+        // Core das Equações de Simulação Financeira da Portabilidade
+        function calcularPortabilidade() {
+            const saldoDevedor = parseFloat(inputSaldoDevedor.value) || 0;
+            const prazo = parseInt(inputPrazoRestante.value) || 0;
+            const taxaAtualAnual = parseFloat(inputTaxaAtual.value) || 0;
+            const taxaNovaAnual = parseFloat(inputTaxaNova.value) || 0;
+            const sistema = selectAmortizacao.value;
+            const taxaAdm = parseFloat(inputTaxaAdm.value) || 0;
+            const seguroMip = parseFloat(inputSeguroMip.value) || 0;
+
+            if (saldoDevedor === 0 || prazo === 0) {
+                resEconomiaTotal.textContent = "0,00";
+                resEconomiaMensalFaixa.textContent = "R$ 0,00 a R$ 0,00 /mês";
+                resParcelaAtual.textContent = "R$ 0,00";
+                resParcelaNova.textContent = "R$ 0,00";
+                resEconomiaMensal.textContent = "R$ 0,00/mês";
+                resCustosExtras.textContent = "R$ 0,00/mês";
+                return;
+            }
+
+            // Converter taxas para mensal compostas
+            const rAtual = Math.pow(1 + (taxaAtualAnual / 100), 1 / 12) - 1;
+            const rNova = Math.pow(1 + (taxaNovaAnual / 100), 1 / 12) - 1;
+
+            // Calcular o impacto dos custos adicionais personalizados do usuário
+            let totalAjustesCusto = 0; 
+            devedorAjustes.forEach(a => {
+                totalAjustesCusto += (a.tipo === '+' ? a.valor : -a.valor);
+            });
+
+            let parcelaAtualEst = 0;
+            let parcelaNovaEst = 0;
+            let fluxoTotalAtual = 0;
+            let fluxoTotalNovo = 0;
+
+            if (sistema === "PRICE") {
+                const pmtAtual = saldoDevedor * (rAtual * Math.pow(1 + rAtual, prazo)) / (Math.pow(1 + rAtual, prazo) - 1);
+                const pmtNovo = saldoDevedor * (rNova * Math.pow(1 + rNova, prazo)) / (Math.pow(1 + rNova, prazo) - 1);
+                
+                parcelaAtualEst = pmtAtual + taxaAdm + seguroMip;
+                parcelaNovaEst = pmtNovo + taxaAdm + seguroMip + totalAjustesCusto;
+
+                fluxoTotalAtual = parcelaAtualEst * prazo;
+                fluxoTotalNovo = parcelaNovaEst * prazo;
+            } else {
+                const amortizacaoFixa = saldoDevedor / prazo;
+                let somaAtual = 0;
+                let somaNovo = 0;
+
+                parcelaAtualEst = amortizacaoFixa + (saldoDevedor * rAtual) + taxaAdm + seguroMip;
+                parcelaNovaEst = amortizacaoFixa + (saldoDevedor * rNova) + taxaAdm + seguroMip + totalAjustesCusto;
+
+                for (let t = 1; t <= prazo; t++) {
+                    const devedorAtual = saldoDevedor - (amortizacaoFixa * (t - 1));
+                    somaAtual += amortizacaoFixa + (devedorAtual * rAtual) + taxaAdm + seguroMip;
+                    somaNovo += amortizacaoFixa + (devedorAtual * rNova) + taxaAdm + seguroMip + totalAjustesCusto;
+                }
+
+                fluxoTotalAtual = somaAtual;
+                fluxoTotalNovo = somaNovo;
+            }
+
+            let economiaTotal = fluxoTotalAtual - fluxoTotalNovo;
+            let economiaTotalExibida = Math.max(0, economiaTotal);
+            let economiaMensalMedia = (fluxoTotalAtual - fluxoTotalNovo) / prazo;
+            let economiaMensalExibida = Math.max(0, economiaMensalMedia);
+
+            let limiteMinEconomia = economiaMensalExibida * 0.92;
+            let limiteMaxEconomia = economiaMensalExibida * 1.08;
+
+            const BRL = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            resEconomiaTotal.textContent = BRL.format(economiaTotalExibida);
+            resEconomiaMensalFaixa.textContent = `R$ ${BRL.format(Math.max(0, limiteMinEconomia))} a R$ ${BRL.format(limiteMaxEconomia)} /mês`;
+            resParcelaAtual.textContent = `R$ ${BRL.format(parcelaAtualEst)}`;
+            resParcelaNova.textContent = `R$ ${BRL.format(parcelaNovaEst)}`;
+            resEconomiaMensal.textContent = `R$ ${BRL.format(economiaMensalExibida)}/mês`;
+            resCustosExtras.textContent = `R$ ${BRL.format(totalAjustesCusto)}/mês`;
+        }
+
+        // Gerar Gráficos com Chart.js
+        function renderizarGraficos(labels, sacData, priceData, destData, totalJuros, saldoInicial) {
+            // Destruir instâncias passadas se existirem
+            if (lineChartInstance) lineChartInstance.destroy();
+            if (pieChartInstance) pieChartInstance.destroy();
+
+            // Configurar Gráfico de Linha (Evolução de Saldo Devedor)
+            const ctxLinha = document.getElementById('chart-amortizacao-linha').getContext('2d');
+            lineChartInstance = new Chart(ctxLinha, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'SAC Sem Aportes',
+                            data: sacData,
+                            borderColor: '#94a3b8',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'PRICE Sem Aportes',
+                            data: priceData,
+                            borderColor: '#cbd5e1',
+                            borderWidth: 2,
+                            fill: false,
+                            tension: 0.1,
+                            pointRadius: 0
+                        },
+                        {
+                            label: 'Cenário com Amortizações',
+                            data: destData,
+                            borderColor: '#10b981',
+                            borderWidth: 3,
+                            fill: true,
+                            backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                            tension: 0.1,
+                            pointRadius: 0
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'top', labels: { font: { size: 10, family: 'Plus Jakarta Sans' } } }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { autoSkip: true, maxTicksLimit: 12, font: { size: 9, family: 'Plus Jakarta Sans' } },
+                            grid: { display: false }
+                        },
+                        y: {
+                            ticks: { font: { size: 9, family: 'Plus Jakarta Sans' } }
+                        }
+                    }
+                }
+            });
+
+            // Configurar Gráfico de Rosca (Juros vs Principal no Cenário Acelerado)
+            const ctxRosca = document.getElementById('chart-amortizacao-rosca').getContext('2d');
+            pieChartInstance = new Chart(ctxRosca, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Amortização Real', 'Juros Cobrados'],
+                    datasets: [{
+                        data: [saldoInicial, totalJuros],
+                        backgroundColor: ['#10b981', '#ef4444'],
+                        borderWidth: 2,
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { font: { size: 10, family: 'Plus Jakarta Sans' } } }
+                    }
+                }
+            });
+        }
+
+        // Core das Equações de Planejamento de Amortização (Aba 2)
+        function calcularDestruidor() {
+            const saldo = parseFloat(destSaldo.value) || 0;
+            const taxaAnual = parseFloat(destTaxa.value) || 0;
+            const prazo = parseInt(destPrazo.value) || 0;
+            const aporte = parseFloat(destAporte.value) || 0;
+            const sistema = destSistema.value;
+
+            if (saldo === 0 || prazo === 0) return;
+
+            const rMensal = Math.pow(1 + (taxaAnual / 100), 1 / 12) - 1;
+            const BRL = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+            // 1. Simular SAC Padrão (Sem Aportes)
+            let sacTotalPago = 0;
+            let sacTotalJuros = 0;
+            let sacSaldo = saldo;
+            const sacAmortizacaoFixa = saldo / prazo;
+            let sacRows = [];
+            let sacSaldosGrafico = [saldo];
+
+            for (let t = 1; t <= prazo; t++) {
+                const juros = sacSaldo * rMensal;
+                const parcela = sacAmortizacaoFixa + juros;
+                const saldoFinal = Math.max(0, sacSaldo - sacAmortizacaoFixa);
+                sacRows.push({ t, sldIni: sacSaldo, pmt: parcela, juros, amort: sacAmortizacaoFixa, sldFim: saldoFinal });
+                sacTotalPago += parcela;
+                sacTotalJuros += juros;
+                sacSaldo = saldoFinal;
+                sacSaldosGrafico.push(saldoFinal);
+            }
+
+            // 2. Simular Price Padrão (Sem Aportes)
+            let priceTotalPago = 0;
+            let priceTotalJuros = 0;
+            let priceSaldo = saldo;
+            const pricePmtBase = saldo * (rMensal * Math.pow(1 + rMensal, prazo)) / (Math.pow(1 + rMensal, prazo) - 1);
+            let priceRows = [];
+            let priceSaldosGrafico = [saldo];
+
+            for (let t = 1; t <= prazo; t++) {
+                const juros = priceSaldo * rMensal;
+                const amort = pricePmtBase - juros;
+                const saldoFinal = Math.max(0, priceSaldo - amort);
+                priceRows.push({ t, sldIni: priceSaldo, pmt: pricePmtBase, juros, amort, sldFim: saldoFinal });
+                priceTotalPago += pricePmtBase;
+                priceTotalJuros += juros;
+                priceSaldo = saldoFinal;
+                priceSaldosGrafico.push(saldoFinal);
+            }
+
+            // 3. Simular Cenário com Amortizações (Com Aporte Extra)
+            let destTotalPago = 0;
+            let destTotalJuros = 0;
+            let destSaldoAtual = saldo;
+            let destRows = [];
+            let destMesesAteQuitar = 0;
+            let destSaldosGrafico = [saldo];
+
+            for (let t = 1; t <= prazo; t++) {
+                if (destSaldoAtual <= 0) break;
+
+                const juros = destSaldoAtual * rMensal;
+                let amortizacaoPadrao = 0;
+                let pmtPadrao = 0;
+
+                if (sistema === 'SAC') {
+                    amortizacaoPadrao = saldo / prazo;
+                    pmtPadrao = amortizacaoPadrao + juros;
+                } else if (sistema === 'PRICE') {
+                    pmtPadrao = pricePmtBase;
+                    amortizacaoPadrao = pmtPadrao - juros;
+                } else { // SAM (Misto)
+                    const pmtSac = (saldo / prazo) + juros;
+                    pmtPadrao = (pmtSac + pricePmtBase) / 2;
+                    amortizacaoPadrao = pmtPadrao - juros;
+                }
+
+                // Aplicar o Aporte Extraordinário direto na amortização principal
+                let amortizacaoTotal = amortizacaoPadrao + aporte;
+                let sldFim = destSaldoAtual - amortizacaoTotal;
+
+                if (sldFim < 0) {
+                    amortizacaoTotal = destSaldoAtual;
+                    sldFim = 0;
+                }
+
+                destRows.push({ t, sldIni: destSaldoAtual, pmt: pmtPadrao, aporte, juros, amort: amortizacaoTotal, sldFim });
+                destTotalPago += pmtPadrao + (destSaldoAtual >= amortizacaoTotal ? aporte : (destSaldoAtual - amortizacaoPadrao));
+                destTotalJuros += juros;
+                destSaldoAtual = sldFim;
+                destMesesAteQuitar = t;
+                destSaldosGrafico.push(sldFim);
+            }
+
+            // Preencher os dados restantes do gráfico de destino com zero caso acabe antes
+            while (destSaldosGrafico.length < sacSaldosGrafico.length) {
+                destSaldosGrafico.push(0);
+            }
+
+            // Criar os labels do Gráfico (Meses)
+            let labelsGrafico = Array.from({ length: sacSaldosGrafico.length }, (_, i) => i === 0 ? 'Início' : `${i}º Mês`);
+
+            // Atualização dos Painéis e Cards de Resumo
+            cardSacTempo.textContent = `${prazo} meses`;
+            cardSacTotal.textContent = `R$ ${BRL.format(sacTotalPago)}`;
+            cardSacJuros.textContent = `R$ ${BRL.format(sacTotalJuros)}`;
+
+            cardPriceTempo.textContent = `${prazo} meses`;
+            cardPriceTotal.textContent = `R$ ${BRL.format(priceTotalPago)}`;
+            cardPriceJuros.textContent = `R$ ${BRL.format(priceTotalJuros)}`;
+
+            cardDestTempo.textContent = `${destMesesAteQuitar} meses`;
+            cardDestTotal.textContent = `R$ ${BRL.format(destTotalPago)}`;
+            
+            // Economia gerada baseada no sistema padrão escolhido pelo usuário
+            const baseJurosComp = (sistema === 'SAC') ? sacTotalJuros : (sistema === 'PRICE' ? priceTotalJuros : (sacTotalJuros + priceTotalJuros)/2);
+            const economiaJuros = baseJurosComp - destTotalJuros;
+            cardDestEconomia.textContent = `R$ ${BRL.format(Math.max(0, economiaJuros))}`;
+
+            // Renderizar Gráficos Chart.js
+            renderizarGraficos(labelsGrafico, sacSaldosGrafico, priceSaldosGrafico, destSaldosGrafico, destTotalJuros, saldo);
+
+            // Limpar corpos de tabela para novos cálculos
+            sacTableBody.innerHTML = '';
+            priceTableBody.innerHTML = '';
+            destTableBody.innerHTML = '';
+
+            // Popular Tabela 1: SAC Padrão
+            sacRows.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-500">${row.t}º</td>
+                    <td class="p-3 text-slate-600">R$ ${BRL.format(row.sldIni)}</td>
+                    <td class="p-3 text-slate-800 font-medium">
+                        <div>R$ ${BRL.format(row.pmt)}</div>
+                        <div class="text-[9px] text-slate-400">Juros: R$ ${BRL.format(row.juros)} | Amort: R$ ${BRL.format(row.amort)}</div>
+                    </td>
+                    <td class="p-3 font-semibold text-slate-900 bg-slate-50/50">R$ ${BRL.format(row.sldFim)}</td>
+                `;
+                sacTableBody.appendChild(tr);
+            });
+
+            // Popular Tabela 2: Price Padrão
+            priceRows.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50 transition border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-500">${row.t}º</td>
+                    <td class="p-3 text-slate-600">R$ ${BRL.format(row.sldIni)}</td>
+                    <td class="p-3 text-slate-800 font-medium">
+                        <div>R$ ${BRL.format(row.pmt)}</div>
+                        <div class="text-[9px] text-slate-400">Juros: R$ ${BRL.format(row.juros)} | Amort: R$ ${BRL.format(row.amort)}</div>
+                    </td>
+                    <td class="p-3 font-semibold text-slate-900 bg-slate-50/50">R$ ${BRL.format(row.sldFim)}</td>
+                `;
+                priceTableBody.appendChild(tr);
+            });
+
+            // Popular Tabela 3: Cenário com Amortizações
+            destRows.forEach(row => {
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-emerald-50/20 transition border-b border-slate-100";
+                
+                const totalPmt = row.pmt + row.aporte;
+
+                tr.innerHTML = `
+                    <td class="p-3 font-bold text-slate-500">${row.t}º</td>
+                    <td class="p-3 text-slate-600">R$ ${BRL.format(row.sldIni)}</td>
+                    <td class="p-3 text-slate-800 font-medium">
+                        <div class="font-bold">R$ ${BRL.format(totalPmt)}</div>
+                        <div class="text-[9px] text-emerald-600">Aporte: R$ ${BRL.format(row.aporte)} | Juros: R$ ${BRL.format(row.juros)}</div>
+                    </td>
+                    <td class="p-3 font-bold text-emerald-900 bg-emerald-50/40">R$ ${BRL.format(row.sldFim)}</td>
+                `;
+                destTableBody.appendChild(tr);
+            });
+        }
+
+        // Lógica de Geração e Exportação de PDF Completo (html2pdf.js)
+        function gerarPDF() {
+            const BRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' });
+            
+            // Criar um elemento HTML limpo temporário para estruturar o PDF de forma esteticamente profissional
+            const pdfContainer = document.createElement('div');
+            pdfContainer.className = "p-8 bg-white text-slate-800 font-sans leading-relaxed text-sm";
+            
+            let htmlContent = "";
+
+            if (activeTab === 'portabilidade') {
+                htmlContent = `
+                    <div style="border-bottom: 2px solid #10b981; padding-bottom: 15px; margin-bottom: 25px;">
+                        <h1 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0;">Amortização <span style="color: #10b981;">Financeira</span></h1>
+                        <p style="font-size: 11px; color: #64748b; margin: 5px 0 0 0;">Análise técnica de viabilidade e portabilidade imobiliária - Data: 2026</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <h2 style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Dados do Contrato Original</h2>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                            <tr style="background-color: #f8fafc;">
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Saldo Devedor Declarado:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${BRL.format(parseFloat(inputSaldoDevedor.value))}</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Prazo Restante:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${inputPrazoRestante.value} meses</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Taxa de Juros Atual:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${inputTaxaAtual.value}% a.a.</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Amortização:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${selectAmortizacao.value}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
+                        <h3 style="font-size: 12px; font-weight: 700; color: #14532d; margin: 0 0 8px 0; text-transform: uppercase;">Economia Líquida Estimada</h3>
+                        <p style="font-size: 18px; font-weight: 800; color: #16a34a; margin: 0 0 4px 0;">Até R$ ${resEconomiaTotal.textContent}</p>
+                        <p style="font-size: 10px; color: #15803d; margin: 0;">Faixa estimada de redução mensal nas parcelas: <strong>${resEconomiaMensalFaixa.textContent}</strong></p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <h2 style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Projeções das Parcelas</h2>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 11px; text-align: left;">
+                            <thead>
+                                <tr style="background-color: #f1f5f9;">
+                                    <th style="padding: 8px; border: 1px solid #e2e8f0;">Detalhamento das Parcelas</th>
+                                    <th style="padding: 8px; border: 1px solid #e2e8f0;">Financiamento Atual</th>
+                                    <th style="padding: 8px; border: 1px solid #e2e8f0; color: #16a34a;">Proposta Portabilidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: 600;">Nova Taxa Nominal Proposta</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0;">${inputTaxaAtual.value}% a.a.</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: 700;">${inputTaxaNova.value}% a.a.</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: 600;">Primeira Parcela Estimada</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0;">${resParcelaAtual.textContent}</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: 700;">${resParcelaNova.textContent}</td>
+                                </tr>
+                                <tr style="background-color: #f8fafc;">
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; font-weight: 600;">Economia Mensal Média</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0;">-</td>
+                                    <td style="padding: 8px; border: 1px solid #e2e8f0; color: #16a34a; font-weight: 700;">${resEconomiaMensal.textContent}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+            } else {
+                // Capturar imagens dos gráficos renderizados
+                const imgLinhaBase64 = lineChartInstance ? lineChartInstance.toBase64Image() : '';
+                const imgRoscaBase64 = pieChartInstance ? pieChartInstance.toBase64Image() : '';
+
+                htmlContent = `
+                    <div style="border-bottom: 2px solid #10b981; padding-bottom: 15px; margin-bottom: 25px;">
+                        <h1 style="font-size: 24px; font-weight: 800; color: #0f172a; margin: 0;">Amortização <span style="color: #10b981;">Financeira</span></h1>
+                        <p style="font-size: 11px; color: #64748b; margin: 5px 0 0 0;">Análise de aceleração de quitação com aportes recorrentes - Data: 2026</p>
+                    </div>
+
+                    <div style="margin-bottom: 25px;">
+                        <h2 style="font-size: 14px; font-weight: 700; color: #1e293b; margin-bottom: 10px;">Configurações do Estudo</h2>
+                        <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+                            <tr style="background-color: #f8fafc;">
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Saldo Devedor Inicial:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${BRL.format(parseFloat(destSaldo.value))}</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Prazo Original:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${destPrazo.value} meses</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Taxa de Juros Aplicada:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0;">${destTaxa.value}% a.a.</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; font-weight: 600;">Aporte Mensal Extra:</td>
+                                <td style="padding: 6px; border: 1px solid #e2e8f0; color: #10b981; font-weight: 700;">${BRL.format(parseFloat(destAporte.value))}</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div style="background-color: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 8px; padding: 15px; margin-bottom: 25px;">
+                        <h3 style="font-size: 12px; font-weight: 700; color: #064e3b; margin: 0 0 8px 0; text-transform: uppercase;">Resultado do Planejamento Acelerado</h3>
+                        <p style="font-size: 18px; font-weight: 800; color: #059669; margin: 0 0 4px 0;">Quitação total em apenas ${cardDestTempo.textContent}!</p>
+                        <p style="font-size: 10px; color: #047857; margin: 0;">Sua economia estimada de juros será de: <strong>${cardDestEconomia.textContent}</strong></p>
+                    </div>
+
+                    <!-- Incorporar Gráficos no PDF -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                        <div style="border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; text-align: center;">
+                            <h4 style="font-size: 10px; font-weight: 700; color: #64748b; margin-top: 0; margin-bottom: 10px; text-transform: uppercase;">Curva de Saldo Devedor</h4>
+                            <img src="${imgLinhaBase64}" style="max-width: 100%; height: auto; display: block; margin: 0 auto; max-height: 180px;" />
+                        </div>
+                        <div style="border: 1px solid #e2e8f0; padding: 10px; border-radius: 8px; text-align: center;">
+                            <h4 style="font-size: 10px; font-weight: 700; color: #64748b; margin-top: 0; margin-bottom: 10px; text-transform: uppercase;">Composição dos Pagamentos</h4>
+                            <img src="${imgRoscaBase64}" style="max-width: 100%; height: auto; display: block; margin: 0 auto; max-height: 180px;" />
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Disclaimer Legal
+            htmlContent += `
+                <div style="margin-top: 40px; border-top: 1px solid #e2e8f0; padding-top: 15px; font-size: 9px; color: #94a3b8; text-align: justify; line-height: 1.4;">
+                    <p style="margin: 0 0 6px 0; font-weight: 700;">Isenção de Responsabilidade e Termos:</p>
+                    <p style="margin: 0;">Este planejamento constitui um estudo de viabilidade estritamente teórico baseado nas equações financeiras aplicadas às tabelas SAC/Price sob condições normais de mercado. Os dados expressos não constituem uma garantia contratual, promessa de quitação de dívida ou oferta vinculante por parte do portal Amortização Financeira. A portabilidade imobiliária está condicionada a análises cadastrais individuais conduzidas pelas instituições financeiras envolvidas, além de taxas adicionais de avaliação física e cartorárias de acordo com a Resolução CMN nº 4.292/2013.</p>
+                </div>
+            `;
+
+            pdfContainer.innerHTML = htmlContent;
+
+            // Configurações do compilador html2pdf
+            const opt = {
+                margin:       12,
+                filename:     activeTab === 'portabilidade' ? 'Portabilidade_Amortizacao_Financeira.pdf' : 'Planejamento_Amortizacao_Acelerada.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+
+            // Rodar e salvar arquivo do usuário
+            html2pdf().from(pdfContainer).set(opt).save();
+        }
+
+        // LGPD: Lógica de controle e consentimento dos cookies
+        function verificarCookies() {
+            if (!localStorage.getItem('lgpd_cookies_aceitos')) {
+                const banner = document.getElementById('lgpd-cookie-banner');
+                setTimeout(() => {
+                    banner.classList.remove('hidden');
+                    banner.classList.remove('translate-y-full');
+                }, 1000);
+            }
+        }
+
+        function aceitarCookies() {
+            localStorage.setItem('lgpd_cookies_aceitos', 'true');
+            const banner = document.getElementById('lgpd-cookie-banner');
+            banner.classList.add('translate-y-full');
+            setTimeout(() => {
+                banner.classList.add('hidden');
+            }, 300);
+        }
+
+        // Lógica de Controle do Carrossel de Artigos
+        let currentCarouselIndex = 0;
+        const totalSlides = 7;
+
+        function getSlidesPerView() {
+            return (window.innerWidth >= 768) ? 2 : 1;
+        }
+
+        function updateCarouselPosition() {
+            const track = document.getElementById('artigos-track');
+            if (!track) return;
+            const spv = getSlidesPerView();
+            const maxIndex = totalSlides - spv;
+
+            if (currentCarouselIndex > maxIndex) currentCarouselIndex = maxIndex;
+            if (currentCarouselIndex < 0) currentCarouselIndex = 0;
+
+            const percentage = -(currentCarouselIndex * (100 / totalSlides));
+            track.style.transform = `translateX(${percentage}%)`;
+        }
+
+        function carouselNext() {
+            const spv = getSlidesPerView();
+            const maxIndex = totalSlides - spv;
+            if (currentCarouselIndex < maxIndex) {
+                currentCarouselIndex++;
+            } else {
+                currentCarouselIndex = 0;
+            }
+            updateCarouselPosition();
+        }
+
+        function carouselPrev() {
+            if (currentCarouselIndex > 0) {
+                currentCarouselIndex--;
+            } else {
+                const spv = getSlidesPerView();
+                currentCarouselIndex = totalSlides - spv;
+            }
+            updateCarouselPosition();
+        }
+
+        // Rotação automática constante (5 segundos)
+        setInterval(() => {
+            carouselNext();
+        }, 5000);
+
+        window.addEventListener('resize', updateCarouselPosition);
+
+        // Banco de Dados de Conteúdo do Blog para SEO (Visualização Completa via Modal)
+        const dbArtigos = [
+            {
+                titulo: "Como Pagar Seu Financiamento Imobiliário em Metade do Tempo",
+                conteudo: `
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Como Pagar Seu Financiamento Imobiliário em Metade do Tempo</h2>
+                    <p class="text-xs text-slate-400 mb-4">Por Especialista em Planejamento Patrimonial</p>
+                    <p class="text-sm mb-4 leading-relaxed">Você sabia que a maior parte das parcelas iniciais do seu financiamento é composta puramente por juros e taxas, e não pelo abatimento da sua dívida real? É por isso que você sente que paga há anos e o saldo devedor quase não cai.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">A Estratégia de Ouro: Amortização Extraordinária</h3>
+                    <p class="text-sm mb-4 leading-relaxed">A forma mais rápida de quitar a sua dívida imobiliária é realizar <strong>amortizações extras</strong>. Toda vez que você junta um dinheiro sobressalente (como o 13º salário, férias ou bônus) e amortiza, esse dinheiro é deduzido <strong>diretamente do seu saldo devedor principal</strong>, e não das parcelas futuras normais.</p>
+                    <p class="text-sm mb-4 leading-relaxed">Ao reduzir o saldo devedor principal diretamente, os juros que incidem nos meses seguintes caem drasticamente, criando um efeito de bola de neve altamente positivo a seu favor.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">Amortizar Prazo vs. Parcela</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Geralmente os bancos oferecem duas opções: reduzir o valor das parcelas mensais ou reduzir o prazo restante do financiamento. Para quem deseja <strong>economizar o máximo de juros possível</strong>, a redução de <strong>prazo</strong> é disparadamente a melhor alternativa, pois remove meses inteiros de cobranças de taxas administrativas e seguros obrigatórios adicionais.</p>
+                `
+            },
+            {
+                titulo: "Descubra Como Reduzir os Juros do Seu Imóvel por Meio da Portabilidade",
+                conteudo: `
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Descubra Como Reduzir os Juros do Seu Imóvel</h2>
+                    <p class="text-xs text-slate-400 mb-4">Por Auditor de Crédito Habitacional</p>
+                    <p class="text-sm mb-4 leading-relaxed">Muitos compradores adquirem seus imóveis em momentos de taxas de juros elevadas no mercado (como períodos em que a Taxa Selic está em alta). O que a maioria esquece é que você não é obrigado a carregar essa taxa contratada original pelos próximos 30 anos.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">O que é a Portabilidade de Financiamento?</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Instituída por regras estritas do Banco Central (Resolução CMN nº 4.292/2013), a portabilidade de crédito permite que você migre sua dívida habitacional para qualquer banco concorrente que ofereça taxas de juros mais baratas e condições mais atraentes.</p>
+                    <p class="text-sm mb-4 leading-relaxed">O banco de origem não pode recusar a transferência, embora ele possa tentar fazer uma contraproposta para manter você como cliente — o que também é excelente, pois ajuda você a renegociar taxas sem precisar mudar de banco.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">Principais Cuidados no Processo</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Ao calcular a portabilidade, é fundamental não olhar apenas a taxa nominal de juros, mas sim o <strong>Custo Efetivo Total (CET)</strong>. Verifique o valor dos seguros obrigatórios (MIP/DFI) e as taxas de administração mensal do novo banco parceiro, pois esses encargos adicionais podem mascarar o desconto real da taxa proposta.</p>
+                `
+            },
+            {
+                titulo: "Vale a Pena Quitar o Financiamento Antes do Prazo ou Deixar o Dinheiro Investido?",
+                conteudo: `
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Vale a Pena Quitar o Financiamento Antes do Prazo?</h2>
+                    <p class="text-xs text-slate-400 mb-4">Por Consultor de Finanças Pessoais</p>
+                    <p class="text-sm mb-4 leading-relaxed">Esta é uma das perguntas mais clássicas de fóruns e discussões financeiras: se eu receber uma quantia substancial, vale mais a pena quitar o meu financiamento imobiliário ou investir esse capital no mercado financeiro?</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">A Regra Prática de Comparação de Taxas</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Para fazer essa conta com exatidão matemática, você deve comparar a taxa de juros real do seu financiamento (CET) com o rendimento líquido (já descontado o Imposto de Renda) de um investimento seguro de renda fixa (como o Tesouro Selic ou CDBs com liquidez).</p>
+                    <p class="text-sm mb-4 leading-relaxed">Se o Custo Efetivo do seu financiamento for de 10.5% ao ano e o seu investimento líquido render menos que isso, **amortizar a dívida é o investimento mais rentável**, pois garante um "retorno" livre de impostos equivalente à taxa de juros que você deixou de pagar ao banco.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">O Fator Psicológico e a Paz de Espírito</h3>
+                    <p class="text-sm mb-4 leading-relaxed">Além da matemática pura, ter um patrimônio livre de dívidas reduz drasticamente o estresse financeiro familiar. Em momentos de incerteza econômica ou perda de renda, não ter uma parcela pesada de financiamento imobiliário batendo à sua porta todo mês confere uma blindagem patrimonial imensurável.</p>
+                `
+            },
+            {
+                titulo: "Entenda a Amortização: Guia Simples para Economizar",
+                conteudo: `
+                    <h2 class="text-xl font-bold mb-4 text-slate-800">Entenda a Amortização: Guia Simples para Economizar</h2>
+                    <p class="text-xs text-slate-400 mb-4">Por Editoria de Conteúdo Amortização Financeira</p>
+                    <p class="text-sm mb-4 leading-relaxed">Amortizar significa, de forma literal, diminuir o valor de uma dívida de maneira gradual e estruturada até a sua total liquidação.</p>
+                    <h3 class="text-base font-bold mb-2 text-slate-800">Como as tabelas SAC e Price reagem</h3>
+                    <p class="text-sm mb-4 leading-relaxed">No Brasil, os dois sistemas de amortização mais comuns são o SAC (Sistema de Amortização Constante) e a Tabela Price. Compreender a diferença básica entre eles ajuda a traçar estratégias de economia eficientes:</p>
+                    <ul class="list-disc pl-5 text-sm mb-4 space-y-2 leading-relaxed">
+                        <li><strong>SAC:</strong> A cota de amortização é fixa. Isso significa que todo mês você abate o mesmo valor absoluto do seu saldo devedor, fazendo com que as parcelas sejam decrescentes a cada prestação paga.</li>
+                        <li><strong>Price:</strong> As prestações são constantes. Inicialmente, quase a totalidade da sua parcela vai para pagar os juros, amortizando uma fração mínima do saldo devedor principal.</li>
+                    </ul>
+                    <p class="text-sm mb-4 leading-relaxed">Independentemente do método contratado, o grande segredo para poupar reside em injetar aportes diretos extras no saldo devedor principal sempre que possível, encurtando o prazo de quitação e livrando-se de juros acumulados no tempo.</p>
+                `
+            }
+        ];
+
+        function openArticle(index) {
+            const modal = document.getElementById('article-modal');
+            const content = document.getElementById('article-modal-content');
+            content.innerHTML = dbArtigos[index].conteudo;
+            modal.classList.remove('hidden');
+        }
+
+        function closeArticleModal() {
+            document.getElementById('article-modal').classList.add('hidden');
+        }
+
+        // Lógica de controle do FAQ
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.add('rotate-45');
+                icon.setAttribute('data-lucide', 'x');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('rotate-45');
+                icon.setAttribute('data-lucide', 'plus');
+            }
+            lucide.createIcons();
+        }
+
+        // Adicionar Listeners de Entrada para cálculo automático da Aba 1
+        inputSaldoDevedor.addEventListener('input', calcularPortabilidade);
+        inputPrazoRestante.addEventListener('input', calcularPortabilidade);
+        inputTaxaAtual.addEventListener('input', calcularPortabilidade);
+        selectAmortizacao.addEventListener('change', calcularPortabilidade);
+        inputTaxaAdm.addEventListener('input', calcularPortabilidade);
+        inputSeguroMip.addEventListener('input', calcularPortabilidade);
+        inputTaxaNova.addEventListener('input', calcularPortabilidade);
+
+        // Adicionar Listeners de Entrada para cálculo automático da Aba 2
+        destSaldo.addEventListener('input', calcularDestruidor);
+        destTaxa.addEventListener('input', calcularDestruidor);
+        destPrazo.addEventListener('input', calcularDestruidor);
+        destAporte.addEventListener('input', calcularDestruidor);
+        destSistema.addEventListener('change', calcularDestruidor);
+
+        // Tratamento do Formulário de Lead (Integração Direta com WhatsApp)
+        document.getElementById('lead-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const nome = document.getElementById('lead-nome').value;
+            const whatsapp = document.getElementById('lead-whatsapp').value;
+            const banco = document.getElementById('lead-banco').value;
+
+            // Coletar dados da simulação para enviar no WhatsApp
+            const economiaTotal = document.getElementById('res-economia-total').textContent;
+            const parcelaNova = document.getElementById('res-parcela-nova').textContent;
+
+            const mensagem = `Olá! Acabei de fazer uma simulação no site *Amortização Financeira* e gostaria de uma análise detalhada:%0A%0A` +
+                             `*Nome:* ${nome}%0A` +
+                             `*WhatsApp:* ${whatsapp}%0A` +
+                             `*Banco Atual:* ${banco}%0A` +
+                             `*Economia Estimada:* R$ ${economiaTotal}%0A` +
+                             `*Nova Parcela:* ${parcelaNova}%0A%0A` +
+                             `Pode me ajudar com o próximo passo?`;
+
+            const btn = this.querySelector('button');
+            btn.innerHTML = '<i data-lucide="loader" class="w-4 h-4 animate-spin text-emerald-400"></i> Abrindo WhatsApp...';
+            lucide.createIcons();
+
+            setTimeout(() => {
+                // Substitua o número abaixo pelo SEU número de WhatsApp (com DDI + DDD)
+                // Exemplo: 55 + DDD + Número. 
+                const seuNumero = "5511999999999"; 
+                window.open(`https://wa.me/${seuNumero}?text=${mensagem}`, '_blank');
+
+                // Abre o Modal de Sucesso Customizado
+                document.getElementById('success-modal').classList.remove('hidden');
+                btn.innerHTML = '<i data-lucide="send" class="w-4 h-4 text-emerald-400"></i> Solicitar Análise de Especialista';
+                lucide.createIcons();
+                this.reset();
+            }, 1000);
+        });
+
+        function closeModal() {
+            document.getElementById('success-modal').classList.add('hidden');
+            const btn = document.querySelector('#lead-form button');
+            btn.innerHTML = '<i data-lucide="send" class="w-4 h-4 text-emerald-400"></i> Solicitar Análise de Especialista';
+            btn.classList.replace('bg-emerald-950', 'bg-slate-900');
+            lucide.createIcons();
+            calcularPortabilidade();
+            calcularDestruidor();
+        }
+
+        // Executar simulações iniciais de partida no carregamento
+        window.onload = function() {
+            verificarCookies();
+            calcularPortabilidade();
+            calcularDestruidor();
+        }
+    </script>
+
+</body>
+</html>
