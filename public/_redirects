@@ -1,0 +1,16 @@
+# Redirects do site antigo (HTML estatico) para URLs amigaveis
+/index.html          /                       301
+/artigos.html        /artigos/               301
+/manual-pratico-portabilidade.html  /artigos/manual-pratico-portabilidade/  301
+/manual-pratico-amortizacao.html    /artigos/manual-pratico-amortizacao/    301
+/guia-pagar-financiamento-mais-rapido.html  /artigos/guia-pagar-financiamento-mais-rapido/  301
+/amortizacao-prazo-vs-parcela.html  /artigos/amortizacao-prazo-vs-parcela/  301
+/tabela-sac-vs-price-comparativo.html  /artigos/tabela-sac-vs-price-comparativo/  301
+/como-diminuir-juros-financiamento.html  /artigos/como-diminuir-juros-financiamento/  301
+/vale-a-pena-amortizar-ou-investir.html  /artigos/vale-a-pena-amortizar-ou-investir/  301
+/artigo-8-uso-fgts.html  /artigos/artigo-8-uso-fgts/  301
+/artigo-9-juros-abusivos.html  /artigos/artigo-9-juros-abusivos/  301
+/artigo-10-juros-compostos.html  /artigos/artigo-10-juros-compostos/  301
+/artigo-como-pagar-mais-rapido.html  /artigos/artigo-como-pagar-mais-rapido/  301
+/privacidade.html  /privacidade/  301
+/termos.html  /termos/  301
